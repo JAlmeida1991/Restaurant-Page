@@ -16,7 +16,16 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas: [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6]
+      pizzas: [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6],
+      contact: {
+        address: {
+          street: "101 Main Street",
+          city: "New York",
+          state: "NY",
+          zip: "10101"
+        },
+        phone: "1-800-800-8000"
+      }
     };
   }
   componentDidMount() {
@@ -29,25 +38,42 @@ class Page extends Component {
         <ul
           style={{
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "space-evenly",
             listStyle: "none",
             backgroundColor: "orange",
-            padding: "10px"
+            padding: "1rem",
+            position: "relative",
+            zIndex: 9999
           }}
         >
           <li>
-            <NavLink exact activeStyle={{ color: "red" }} to="/">
+            <NavLink
+              exact
+              style={{ color: "blue" }}
+              activeStyle={{
+                color: "crimson"
+              }}
+              to="/"
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink activeStyle={{ color: "red" }} to="/menu">
+            <NavLink
+              style={{ color: "blue" }}
+              activeStyle={{ color: "crimson" }}
+              to="/menu"
+            >
               Menu
             </NavLink>
           </li>
           <li>
-            <NavLink activeStyle={{ color: "red" }} to="/contact">
-              Conact
+            <NavLink
+              style={{ color: "blue" }}
+              activeStyle={{ color: "crimson" }}
+              to="/contact"
+            >
+              Contact
             </NavLink>
           </li>
         </ul>
@@ -57,8 +83,13 @@ class Page extends Component {
             path="/menu"
             render={props => <Menu {...props} pizzas={this.state.pizzas} />}
           />
-          <Route path="/contact" />
-          <Route path="/" />
+          <Route
+            path="/contact"
+            render={props => (
+              <Contact {...props} contact={this.state.contact} />
+            )}
+          />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     );

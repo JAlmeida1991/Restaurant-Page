@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 
-import MasterRouter from "./router/MasterRouter";
+import Container from "./containers/Container";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <MasterRouter />
-  </BrowserRouter>,
-  document.getElementById("app")
-);
+ReactDOM.render(<Container />, document.getElementById("app"));

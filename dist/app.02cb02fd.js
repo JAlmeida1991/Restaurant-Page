@@ -25527,13 +25527,23 @@ var menu = function menu(props) {
     null,
     _react2.default.createElement(
       "h1",
-      null,
-      "Jonathan's Pizza Place"
+      {
+        style: {
+          textAlign: "center",
+          marginBottom: "1rem"
+        }
+      },
+      "Menu"
     ),
     _react2.default.createElement(
       "p",
-      null,
-      "We Sell the best pizza in town"
+      {
+        style: {
+          textAlign: "center",
+          marginBottom: "1rem"
+        }
+      },
+      "We sell the best pizza in town!"
     ),
     _react2.default.createElement(
       "div",
@@ -25544,7 +25554,7 @@ var menu = function menu(props) {
           gridGap: "10px"
         }
       },
-      props.pizzas.map(function (pizza) {
+      props.pizzas.map(function (pizza, index) {
         return _react2.default.createElement(
           "div",
           {
@@ -25553,6 +25563,16 @@ var menu = function menu(props) {
             },
             key: pizza
           },
+          _react2.default.createElement(
+            "h2",
+            {
+              style: {
+                textAlign: "center"
+              }
+            },
+            "Pizza ",
+            index + 1
+          ),
           _react2.default.createElement("img", {
             src: pizza,
             style: {
@@ -25566,11 +25586,173 @@ var menu = function menu(props) {
 };
 
 exports.default = menu;
-},{"react":"../node_modules/react/index.js"}],"components/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"video/MP4/Tomato.mp4":[function(require,module,exports) {
+module.exports = "/Tomato.9a578ed7.mp4";
+},{}],"video/OGV/Tomato.ogv":[function(require,module,exports) {
+module.exports = "/Tomato.4fb16f75.ogv";
+},{}],"video/WEBM/Tomato.webm":[function(require,module,exports) {
+module.exports = "/Tomato.5fb0c169.webm";
+},{}],"components/Home.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"components/Contact.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-},{}],"images/pizza1.jpg":[function(require,module,exports) {
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Tomato = require("../video/MP4/Tomato.mp4");
+
+var _Tomato2 = _interopRequireDefault(_Tomato);
+
+var _Tomato3 = require("../video/OGV/Tomato.ogv");
+
+var _Tomato4 = _interopRequireDefault(_Tomato3);
+
+var _Tomato5 = require("../video/WEBM/Tomato.webm");
+
+var _Tomato6 = _interopRequireDefault(_Tomato5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var home = function home(props) {
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "h1",
+      {
+        style: {
+          textAlign: "center",
+          marginTop: " 1rem",
+          position: "relative",
+          fontSize: "4rem",
+          color: "#fff",
+          zIndex: "1000"
+        }
+      },
+      "John's One Stop Pizza Place"
+    ),
+    _react2.default.createElement(
+      "p",
+      {
+        style: {
+          textAlign: "center",
+          marginTop: " 1rem",
+          position: "relative",
+          fontSize: "2rem",
+          color: "#fff",
+          zIndex: "1000"
+        }
+      },
+      "We use the freshest tomatoes to make our Pizza!"
+    ),
+    _react2.default.createElement(
+      "video",
+      {
+        style: {
+          position: "fixed",
+          right: "0",
+          bottom: "0",
+          minWidth: "100%",
+          minHeight: "100%"
+        },
+        loop: true,
+        autoPlay: true
+      },
+      _react2.default.createElement("source", { src: _Tomato2.default, type: "video/mp4" }),
+      _react2.default.createElement("source", { src: _Tomato4.default, type: "video/ogv" }),
+      _react2.default.createElement("source", { src: _Tomato6.default, type: "video/webm" })
+    )
+  );
+};
+
+exports.default = home;
+},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Contact.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var contact = function contact(_ref) {
+  var contact = _ref.contact;
+  var phone = contact.phone,
+      address = contact.address;
+  var city = address.city,
+      state = address.state,
+      street = address.street,
+      zip = address.zip;
+
+  return _react2.default.createElement(
+    "div",
+    {
+      style: {
+        display: "flex",
+        flexFlow: "column nowrap",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "calc(75vh - 37px)"
+      }
+    },
+    _react2.default.createElement(
+      "h1",
+      {
+        style: {
+          textAlign: "center"
+        }
+      },
+      "Contact:"
+    ),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement(
+      "p",
+      {
+        style: {
+          textAlign: "center",
+          fontSize: "2rem"
+        }
+      },
+      "We are located in:"
+    ),
+    _react2.default.createElement(
+      "address",
+      {
+        style: {
+          textAlign: "center",
+          fontSize: "2rem"
+        }
+      },
+      street,
+      _react2.default.createElement("br", null),
+      city + ", " + state + ", " + zip,
+      _react2.default.createElement(
+        "p",
+        {
+          style: {
+            textAlign: "center",
+            fontSize: "2rem"
+          }
+        },
+        _react2.default.createElement("br", null),
+        "Our phone number is:"
+      ),
+      "Phone: ",
+      phone
+    )
+  );
+};
+
+exports.default = contact;
+},{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
 module.exports = "/pizza2.88ad31b1.jpg";
@@ -25652,7 +25834,16 @@ var Page = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
 
     _this.state = {
-      pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default]
+      pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default],
+      contact: {
+        address: {
+          street: "101 Main Street",
+          city: "New York",
+          state: "NY",
+          zip: "10101"
+        },
+        phone: "1-800-800-8000"
+      }
     };
     return _this;
   }
@@ -25675,10 +25866,12 @@ var Page = function (_Component) {
           {
             style: {
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "space-evenly",
               listStyle: "none",
               backgroundColor: "orange",
-              padding: "10px"
+              padding: "1rem",
+              position: "relative",
+              zIndex: 9999
             }
           },
           _react2.default.createElement(
@@ -25686,7 +25879,14 @@ var Page = function (_Component) {
             null,
             _react2.default.createElement(
               _reactRouterDom.NavLink,
-              { exact: true, activeStyle: { color: "red" }, to: "/" },
+              {
+                exact: true,
+                style: { color: "blue" },
+                activeStyle: {
+                  color: "crimson"
+                },
+                to: "/"
+              },
               "Home"
             )
           ),
@@ -25695,7 +25895,11 @@ var Page = function (_Component) {
             null,
             _react2.default.createElement(
               _reactRouterDom.NavLink,
-              { activeStyle: { color: "red" }, to: "/menu" },
+              {
+                style: { color: "blue" },
+                activeStyle: { color: "crimson" },
+                to: "/menu"
+              },
               "Menu"
             )
           ),
@@ -25704,8 +25908,12 @@ var Page = function (_Component) {
             null,
             _react2.default.createElement(
               _reactRouterDom.NavLink,
-              { activeStyle: { color: "red" }, to: "/contact" },
-              "Conact"
+              {
+                style: { color: "blue" },
+                activeStyle: { color: "crimson" },
+                to: "/contact"
+              },
+              "Contact"
             )
           )
         ),
@@ -25718,8 +25926,13 @@ var Page = function (_Component) {
               return _react2.default.createElement(_Menu2.default, _extends({}, props, { pizzas: _this2.state.pizzas }));
             }
           }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/contact" }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/" })
+          _react2.default.createElement(_reactRouterDom.Route, {
+            path: "/contact",
+            render: function render(props) {
+              return _react2.default.createElement(_Contact2.default, _extends({}, props, { contact: _this2.state.contact }));
+            }
+          }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/", component: _Home2.default })
         )
       );
     }
@@ -25729,7 +25942,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"router/MasterRouter.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25748,7 +25961,7 @@ var _Page2 = _interopRequireDefault(_Page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App(props) {
+var container = function container(props) {
   return _react2.default.createElement(
     _reactRouterDom.BrowserRouter,
     null,
@@ -25756,7 +25969,7 @@ var App = function App(props) {
   );
 };
 
-exports.default = App;
+exports.default = container;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/Page":"components/Page.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
@@ -25768,20 +25981,14 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = require("react-router-dom");
+var _Container = require("./containers/Container");
 
-var _MasterRouter = require("./router/MasterRouter");
-
-var _MasterRouter2 = _interopRequireDefault(_MasterRouter);
+var _Container2 = _interopRequireDefault(_Container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(
-  _reactRouterDom.BrowserRouter,
-  null,
-  _react2.default.createElement(_MasterRouter2.default, null)
-), document.getElementById("app"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./router/MasterRouter":"router/MasterRouter.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom2.default.render(_react2.default.createElement(_Container2.default, null), document.getElementById("app"));
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./containers/Container":"containers/Container.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -25810,7 +26017,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49508' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49547' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

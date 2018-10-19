@@ -4,8 +4,22 @@ const menu = props => {
   console.log(props);
   return (
     <div>
-      <h1>Jonathan's Pizza Place</h1>
-      <p>We Sell the best pizza in town</p>
+      <h1
+        style={{
+          textAlign: "center",
+          marginBottom: "1rem"
+        }}
+      >
+        Menu
+      </h1>
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "1rem"
+        }}
+      >
+        We sell the best pizza in town!
+      </p>
       <div
         style={{
           display: "grid",
@@ -13,13 +27,20 @@ const menu = props => {
           gridGap: "10px"
         }}
       >
-        {props.pizzas.map(pizza => (
+        {props.pizzas.map((pizza, index) => (
           <div
             style={{
               display: "inline-block"
             }}
             key={pizza}
           >
+            <h2
+              style={{
+                textAlign: "center"
+              }}
+            >
+              Pizza {index + 1}
+            </h2>
             <img
               src={pizza}
               style={{
