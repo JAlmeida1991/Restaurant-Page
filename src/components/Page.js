@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
+import NavBar from "./NavBar";
 import Menu from "./Menu";
 import Home from "./Home";
 import Contact from "./Contact";
+import Error_Page from "./Error";
 
 import pizza1 from "../images/pizza1.jpg";
 import pizza2 from "../images/pizza2.jpg";
@@ -35,61 +37,25 @@ class Page extends Component {
   render() {
     return (
       <div>
-        <ul
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            listStyle: "none",
-            backgroundColor: "orange",
-            padding: "1rem",
-            position: "relative",
-            zIndex: 9999
-          }}
-        >
-          <li>
-            <NavLink
-              exact
-              style={{ color: "blue" }}
-              activeStyle={{
-                color: "crimson"
-              }}
-              to="/"
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={{ color: "blue" }}
-              activeStyle={{ color: "crimson" }}
-              to="/menu"
-            >
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={{ color: "blue" }}
-              activeStyle={{ color: "crimson" }}
-              to="/contact"
-            >
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-
+        <NavBar />
         <Switch>
           <Route
+            exact
             path="/menu"
             render={props => <Menu {...props} pizzas={this.state.pizzas} />}
           />
+
           <Route
+            exact
             path="/contact"
             render={props => (
               <Contact {...props} contact={this.state.contact} />
             )}
           />
-          <Route path="/" component={Home} />
+
+          <Route path="/" exact component={Home} />
+
+          <Route component={Error_Page} />
         </Switch>
       </div>
     );

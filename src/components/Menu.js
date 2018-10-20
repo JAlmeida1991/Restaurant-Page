@@ -3,11 +3,16 @@ import React from "react";
 const menu = props => {
   console.log(props);
   return (
-    <div>
+    <div
+      style={{
+        width: "95%",
+        margin: "auto"
+      }}
+    >
       <h1
         style={{
           textAlign: "center",
-          marginBottom: "1rem"
+          marginTop: "2rem"
         }}
       >
         Menu
@@ -15,7 +20,7 @@ const menu = props => {
       <p
         style={{
           textAlign: "center",
-          marginBottom: "1rem"
+          marginTop: "2rem"
         }}
       >
         We sell the best pizza in town!
@@ -24,22 +29,25 @@ const menu = props => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-          gridGap: "10px"
+          gridGap: "1.5rem",
+          marginTop: "1.5rem"
         }}
       >
         {props.pizzas.map((pizza, index) => (
-          <div
-            style={{
-              display: "inline-block"
-            }}
-            key={pizza}
-          >
+          <div key={pizza}>
             <h2
               style={{
                 textAlign: "center"
               }}
             >
-              Pizza {index + 1}
+              {index + 1 == 1
+                ? index + 1 + "st"
+                : index + 1 == 2
+                  ? index + 1 + "nd"
+                  : index + 1 == 3
+                    ? index + 1 + "rd"
+                    : index + 1 + "th"}{" "}
+              Pizza
             </h2>
             <img
               src={pizza}

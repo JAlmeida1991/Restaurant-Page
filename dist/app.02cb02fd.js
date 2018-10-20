@@ -25507,7 +25507,89 @@ exports.Switch = _Switch3.default;
 exports.generatePath = _generatePath3.default;
 exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
-},{"./BrowserRouter":"../node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"../node_modules/react-router-dom/es/HashRouter.js","./Link":"../node_modules/react-router-dom/es/Link.js","./MemoryRouter":"../node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"../node_modules/react-router-dom/es/NavLink.js","./Prompt":"../node_modules/react-router-dom/es/Prompt.js","./Redirect":"../node_modules/react-router-dom/es/Redirect.js","./Route":"../node_modules/react-router-dom/es/Route.js","./Router":"../node_modules/react-router-dom/es/Router.js","./StaticRouter":"../node_modules/react-router-dom/es/StaticRouter.js","./Switch":"../node_modules/react-router-dom/es/Switch.js","./generatePath":"../node_modules/react-router-dom/es/generatePath.js","./matchPath":"../node_modules/react-router-dom/es/matchPath.js","./withRouter":"../node_modules/react-router-dom/es/withRouter.js"}],"components/Menu.js":[function(require,module,exports) {
+},{"./BrowserRouter":"../node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"../node_modules/react-router-dom/es/HashRouter.js","./Link":"../node_modules/react-router-dom/es/Link.js","./MemoryRouter":"../node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"../node_modules/react-router-dom/es/NavLink.js","./Prompt":"../node_modules/react-router-dom/es/Prompt.js","./Redirect":"../node_modules/react-router-dom/es/Redirect.js","./Route":"../node_modules/react-router-dom/es/Route.js","./Router":"../node_modules/react-router-dom/es/Router.js","./StaticRouter":"../node_modules/react-router-dom/es/StaticRouter.js","./Switch":"../node_modules/react-router-dom/es/Switch.js","./generatePath":"../node_modules/react-router-dom/es/generatePath.js","./matchPath":"../node_modules/react-router-dom/es/matchPath.js","./withRouter":"../node_modules/react-router-dom/es/withRouter.js"}],"components/NavBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var navbar = function navbar(props) {
+  return _react2.default.createElement(
+    "ul",
+    {
+      style: {
+        display: "flex",
+        justifyContent: "space-evenly",
+        listStyle: "none",
+        backgroundColor: "#f39c12",
+        padding: "1rem",
+        position: "relative",
+        zIndex: 9999
+      }
+    },
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.NavLink,
+        {
+          exact: true,
+          style: { color: "blue" },
+          activeStyle: {
+            color: "red",
+            fontWeight: "bold"
+          },
+          to: "/"
+        },
+        "Home"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.NavLink,
+        {
+          style: { color: "blue" },
+          activeStyle: {
+            color: "red",
+            fontWeight: "bold"
+          },
+          to: "/menu"
+        },
+        "Menu"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.NavLink,
+        {
+          style: { color: "blue" },
+          activeStyle: {
+            color: "red",
+            fontWeight: "bold"
+          },
+          to: "/contact"
+        },
+        "Contact"
+      )
+    )
+  );
+};
+
+exports.default = navbar;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Menu.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25524,13 +25606,18 @@ var menu = function menu(props) {
   console.log(props);
   return _react2.default.createElement(
     "div",
-    null,
+    {
+      style: {
+        width: "95%",
+        margin: "auto"
+      }
+    },
     _react2.default.createElement(
       "h1",
       {
         style: {
           textAlign: "center",
-          marginBottom: "1rem"
+          marginTop: "2rem"
         }
       },
       "Menu"
@@ -25540,7 +25627,7 @@ var menu = function menu(props) {
       {
         style: {
           textAlign: "center",
-          marginBottom: "1rem"
+          marginTop: "2rem"
         }
       },
       "We sell the best pizza in town!"
@@ -25551,18 +25638,14 @@ var menu = function menu(props) {
         style: {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-          gridGap: "10px"
+          gridGap: "1.5rem",
+          marginTop: "1.5rem"
         }
       },
       props.pizzas.map(function (pizza, index) {
         return _react2.default.createElement(
           "div",
-          {
-            style: {
-              display: "inline-block"
-            },
-            key: pizza
-          },
+          { key: pizza },
           _react2.default.createElement(
             "h2",
             {
@@ -25570,8 +25653,9 @@ var menu = function menu(props) {
                 textAlign: "center"
               }
             },
-            "Pizza ",
-            index + 1
+            index + 1 == 1 ? index + 1 + "st" : index + 1 == 2 ? index + 1 + "nd" : index + 1 == 3 ? index + 1 + "rd" : index + 1 + "th",
+            " ",
+            "Pizza"
           ),
           _react2.default.createElement("img", {
             src: pizza,
@@ -25626,7 +25710,7 @@ var home = function home(props) {
       {
         style: {
           textAlign: "center",
-          marginTop: " 1rem",
+          marginTop: "2rem",
           position: "relative",
           fontSize: "4rem",
           color: "#fff",
@@ -25647,7 +25731,7 @@ var home = function home(props) {
           zIndex: "1000"
         }
       },
-      "We use the freshest tomatoes to make our Pizza!"
+      "We use the freshest tomato sauce sauce to make our Pizza!"
     ),
     _react2.default.createElement(
       "video",
@@ -25659,6 +25743,7 @@ var home = function home(props) {
           minWidth: "100%",
           minHeight: "100%"
         },
+        muted: true,
         loop: true,
         autoPlay: true
       },
@@ -25752,6 +25837,43 @@ var contact = function contact(_ref) {
 };
 
 exports.default = contact;
+},{"react":"../node_modules/react/index.js"}],"components/Error.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var error = function error(_ref) {
+  var history = _ref.history;
+
+  console.log(history);
+  setTimeout(function () {
+    history.replace("/");
+  }, 2000);
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "h1",
+      {
+        style: {
+          textAlign: "center",
+          marginTop: "2rem"
+        }
+      },
+      "Page not found..."
+    )
+  );
+};
+
+exports.default = error;
 },{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
@@ -25781,6 +25903,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require("react-router-dom");
 
+var _NavBar = require("./NavBar");
+
+var _NavBar2 = _interopRequireDefault(_NavBar);
+
 var _Menu = require("./Menu");
 
 var _Menu2 = _interopRequireDefault(_Menu);
@@ -25792,6 +25918,10 @@ var _Home2 = _interopRequireDefault(_Home);
 var _Contact = require("./Contact");
 
 var _Contact2 = _interopRequireDefault(_Contact);
+
+var _Error = require("./Error");
+
+var _Error2 = _interopRequireDefault(_Error);
 
 var _pizza = require("../images/pizza1.jpg");
 
@@ -25861,78 +25991,26 @@ var Page = function (_Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "ul",
-          {
-            style: {
-              display: "flex",
-              justifyContent: "space-evenly",
-              listStyle: "none",
-              backgroundColor: "orange",
-              padding: "1rem",
-              position: "relative",
-              zIndex: 9999
-            }
-          },
-          _react2.default.createElement(
-            "li",
-            null,
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              {
-                exact: true,
-                style: { color: "blue" },
-                activeStyle: {
-                  color: "crimson"
-                },
-                to: "/"
-              },
-              "Home"
-            )
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              {
-                style: { color: "blue" },
-                activeStyle: { color: "crimson" },
-                to: "/menu"
-              },
-              "Menu"
-            )
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            _react2.default.createElement(
-              _reactRouterDom.NavLink,
-              {
-                style: { color: "blue" },
-                activeStyle: { color: "crimson" },
-                to: "/contact"
-              },
-              "Contact"
-            )
-          )
-        ),
+        _react2.default.createElement(_NavBar2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, {
+            exact: true,
             path: "/menu",
             render: function render(props) {
               return _react2.default.createElement(_Menu2.default, _extends({}, props, { pizzas: _this2.state.pizzas }));
             }
           }),
           _react2.default.createElement(_reactRouterDom.Route, {
+            exact: true,
             path: "/contact",
             render: function render(props) {
               return _react2.default.createElement(_Contact2.default, _extends({}, props, { contact: _this2.state.contact }));
             }
           }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/", component: _Home2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { component: _Error2.default })
         )
       );
     }
@@ -25942,7 +26020,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./NavBar":"components/NavBar.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","./Error":"components/Error.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26017,7 +26095,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49547' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49219' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

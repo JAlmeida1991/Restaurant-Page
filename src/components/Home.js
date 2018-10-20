@@ -10,7 +10,7 @@ const home = props => {
       <h1
         style={{
           textAlign: "center",
-          marginTop: " 1rem",
+          marginTop: "2rem",
           position: "relative",
           fontSize: "4rem",
           color: "#fff",
@@ -29,7 +29,7 @@ const home = props => {
           zIndex: "1000"
         }}
       >
-        We use the freshest tomatoes to make our Pizza!
+        We use the freshest tomato sauce sauce to make our Pizza!
       </p>
       <video
         style={{
@@ -39,6 +39,7 @@ const home = props => {
           minWidth: "100%",
           minHeight: "100%"
         }}
+        muted
         loop
         autoPlay
       >
