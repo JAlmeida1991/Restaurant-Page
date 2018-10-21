@@ -25589,7 +25589,7 @@ var navbar = function navbar(props) {
 };
 
 exports.default = navbar;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Menu.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25602,75 +25602,207 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var menu = function menu(props) {
+var modal = function modal(props) {
   console.log(props);
   return _react2.default.createElement(
     "div",
     {
+      onClick: props.removeModal,
       style: {
-        width: "95%",
-        margin: "auto"
+        position: "fixed",
+        top: "0",
+        left: "0",
+        height: "100%",
+        width: "100%",
+        backgroundColor: "rgba(0,0,0,0.5)",
+        zIndex: 10000,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexFlow: "column nowrap"
       }
     },
-    _react2.default.createElement(
-      "h1",
-      {
-        style: {
-          textAlign: "center",
-          marginTop: "2rem"
-        }
+    _react2.default.createElement("img", {
+      onClick: function onClick(e) {
+        return e.stopPropagation();
       },
-      "Menu"
-    ),
+      width: "50%",
+      height: "auto",
+      src: props.pizza[props.index]
+    }),
     _react2.default.createElement(
       "p",
       {
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
         style: {
-          textAlign: "center",
-          marginTop: "2rem"
+          marginTop: "1rem",
+          color: "white",
+          fontWeight: "bold",
+          width: "50%"
         }
       },
-      "We sell the best pizza in town!"
-    ),
-    _react2.default.createElement(
-      "div",
-      {
-        style: {
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-          gridGap: "1.5rem",
-          marginTop: "1.5rem"
-        }
-      },
-      props.pizzas.map(function (pizza, index) {
-        return _react2.default.createElement(
-          "div",
-          { key: pizza },
-          _react2.default.createElement(
-            "h2",
-            {
-              style: {
-                textAlign: "center"
-              }
-            },
-            index + 1 == 1 ? index + 1 + "st" : index + 1 == 2 ? index + 1 + "nd" : index + 1 == 3 ? index + 1 + "rd" : index + 1 + "th",
-            " ",
-            "Pizza"
-          ),
-          _react2.default.createElement("img", {
-            src: pizza,
-            style: {
-              width: "100%"
-            }
-          })
-        );
-      })
+      "All our pizzas are made with the freshest ingredients. We pride our selves to only serve organic ingredients only! Total Price for this pizza is:",
+      " $" + Math.floor(Math.random() * (12 - 8) + 8).toFixed(2)
     )
   );
 };
 
-exports.default = menu;
-},{"react":"../node_modules/react/index.js"}],"video/MP4/Tomato.mp4":[function(require,module,exports) {
+exports.default = modal;
+},{"react":"../node_modules/react/index.js"}],"components/Menu.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Modal = require("./Modal");
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Menu = function (_Component) {
+  _inherits(Menu, _Component);
+
+  function Menu(props) {
+    _classCallCheck(this, Menu);
+
+    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+
+    _this.state = { showModal: false, index: null };
+    _this.showModalHandler = _this.showModalHandler.bind(_this);
+    _this.removeModalHandler = _this.removeModalHandler.bind(_this);
+    return _this;
+  }
+
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
+
+  _createClass(Menu, [{
+    key: "formatPizza",
+    value: function formatPizza(index) {
+      return _react2.default.createElement(
+        "sup",
+        null,
+        index + 1 == 1 ? "st" : index + 1 == 2 ? "nd" : index + 1 == 3 ? "rd" : "th",
+        " "
+      );
+    }
+  }, {
+    key: "showModalHandler",
+    value: function showModalHandler(index) {
+      if (!this.state.showModal) {
+        console.log(index);
+        this.setState({ showModal: true, index: index });
+      }
+    }
+  }, {
+    key: "removeModalHandler",
+    value: function removeModalHandler() {
+      if (this.state.showModal) {
+        this.setState({ showModal: false });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        "div",
+        {
+          style: {
+            width: "95%",
+            margin: "auto"
+          }
+        },
+        _react2.default.createElement(
+          "h1",
+          {
+            style: {
+              textAlign: "center",
+              marginTop: "2rem"
+            }
+          },
+          "Menu"
+        ),
+        _react2.default.createElement(
+          "p",
+          {
+            style: {
+              textAlign: "center",
+              marginTop: "2rem"
+            }
+          },
+          "We sell the best pizza in town!"
+        ),
+        _react2.default.createElement(
+          "div",
+          {
+            style: {
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+              gridGap: "1.5rem",
+              marginTop: "1.5rem"
+            }
+          },
+          this.props.pizzas.map(function (pizza, index) {
+            return _react2.default.createElement(
+              "div",
+              { key: pizza },
+              _react2.default.createElement(
+                "h2",
+                {
+                  style: {
+                    textAlign: "center"
+                  }
+                },
+                index + 1,
+                _this2.formatPizza(index),
+                "Pizza"
+              ),
+              _react2.default.createElement("img", {
+                src: pizza,
+                style: {
+                  width: "100%",
+                  cursor: "pointer"
+                },
+                onClick: function onClick() {
+                  return _this2.showModalHandler(index);
+                }
+              })
+            );
+          })
+        ),
+        this.state.showModal ? _react2.default.createElement(_Modal2.default, {
+          pizza: this.props.pizzas,
+          index: this.state.index,
+          removeModal: this.removeModalHandler
+        }) : null
+      );
+    }
+  }]);
+
+  return Menu;
+}(_react.Component);
+
+exports.default = Menu;
+},{"react":"../node_modules/react/index.js","./Modal":"components/Modal.js"}],"video/MP4/Tomato.mp4":[function(require,module,exports) {
 module.exports = "/Tomato.9a578ed7.mp4";
 },{}],"video/OGV/Tomato.ogv":[function(require,module,exports) {
 module.exports = "/Tomato.4fb16f75.ogv";
@@ -26095,7 +26227,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49219' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49997' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
