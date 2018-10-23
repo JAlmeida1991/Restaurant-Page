@@ -1,0 +1,28 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.modal-image {
+  width: 50%;
+  height: auto;
+  @media screen and (max-width: 40rem) {
+    width: 65%;
+  }
+}
+
+.modal-image-detail {
+  margin-top: 1rem;
+  color: white;
+  font-weight: bold;
+  width: 50%;
+}

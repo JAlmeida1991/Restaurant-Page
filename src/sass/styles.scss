@@ -1,20 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  background-color: #eee;
-}
-
-html,
-body {
-  height: 100%;
-}
+@import "base";
+@import "contact";
+@import "menu";
+@import "modal";

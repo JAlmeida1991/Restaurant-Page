@@ -7,12 +7,7 @@ const error = ({ history }) => {
   }, 2000);
   return (
     <div>
-      <h1
-        style={{
-          textAlign: "center",
-          marginTop: "2rem"
-        }}
-      >
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
         Page not found...
       </h1>
     </div>

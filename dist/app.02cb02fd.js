@@ -25606,43 +25606,20 @@ var modal = function modal(props) {
   console.log(props);
   return _react2.default.createElement(
     "div",
-    {
-      onClick: props.removeModal,
-      style: {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        height: "100%",
-        width: "100%",
-        backgroundColor: "rgba(0,0,0,0.5)",
-        zIndex: 10000,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexFlow: "column nowrap"
-      }
-    },
+    { onClick: props.removeModal, className: "modal" },
     _react2.default.createElement("img", {
       onClick: function onClick(e) {
         return e.stopPropagation();
       },
-      width: "50%",
-      height: "auto",
-      src: props.pizza[props.index]
+      src: props.pizza[props.index],
+      alt: "pizza",
+      className: "modal-image"
     }),
     _react2.default.createElement(
       "p",
-      {
-        onClick: function onClick(e) {
+      { onClick: function onClick(e) {
           return e.stopPropagation();
-        },
-        style: {
-          marginTop: "1rem",
-          color: "white",
-          fontWeight: "bold",
-          width: "50%"
-        }
-      },
+        }, className: "modal-image-detail" },
       "All our pizzas are made with the freshest ingredients. We pride our selves to only serve organic ingredients only! Total Price for this pizza is:",
       " $" + Math.floor(Math.random() * (12 - 8) + 8).toFixed(2)
     )
@@ -25689,19 +25666,28 @@ var Menu = function (_Component) {
     return _this;
   }
 
-  // componentDidMount() {
-  //   console.log(this.props);
-  // }
-
   _createClass(Menu, [{
     key: "formatPizza",
     value: function formatPizza(index) {
-      return _react2.default.createElement(
-        "sup",
-        null,
-        index + 1 == 1 ? "st" : index + 1 == 2 ? "nd" : index + 1 == 3 ? "rd" : "th",
-        " "
-      );
+      if (index + 1 == 1) {
+        return _react2.default.createElement(
+          "sup",
+          null,
+          "st "
+        );
+      } else if (index + 1 == 2) {
+        return _react2.default.createElement(
+          "sup",
+          null,
+          "nd "
+        );
+      } else {
+        return _react2.default.createElement(
+          "sup",
+          null,
+          "th "
+        );
+      }
     }
   }, {
     key: "showModalHandler",
@@ -25725,63 +25711,34 @@ var Menu = function (_Component) {
 
       return _react2.default.createElement(
         "div",
-        {
-          style: {
-            width: "95%",
-            margin: "auto"
-          }
-        },
+        { className: "menu-container" },
         _react2.default.createElement(
           "h1",
-          {
-            style: {
-              textAlign: "center",
-              marginTop: "2rem"
-            }
-          },
+          { className: "menu-title" },
           "Menu"
         ),
         _react2.default.createElement(
           "p",
-          {
-            style: {
-              textAlign: "center",
-              marginTop: "2rem"
-            }
-          },
+          { className: "menu-intro" },
           "We sell the best pizza in town!"
         ),
         _react2.default.createElement(
           "div",
-          {
-            style: {
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-              gridGap: "1.5rem",
-              marginTop: "1.5rem"
-            }
-          },
+          { className: "menu-pizza-container" },
           this.props.pizzas.map(function (pizza, index) {
             return _react2.default.createElement(
               "div",
-              { key: pizza },
+              { key: pizza, style: { width: "100%" } },
               _react2.default.createElement(
                 "h2",
-                {
-                  style: {
-                    textAlign: "center"
-                  }
-                },
+                { style: { textAlign: "center" } },
                 index + 1,
                 _this2.formatPizza(index),
                 "Pizza"
               ),
               _react2.default.createElement("img", {
                 src: pizza,
-                style: {
-                  width: "100%",
-                  cursor: "pointer"
-                },
+                style: { width: "100%", cursor: "pointer" },
                 onClick: function onClick() {
                   return _this2.showModalHandler(index);
                 }
@@ -25887,7 +25844,7 @@ var home = function home(props) {
 };
 
 exports.default = home;
-},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Contact.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Form.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25897,6 +25854,64 @@ Object.defineProperty(exports, "__esModule", {
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var form = function form(props) {
+  return _react2.default.createElement(
+    "form",
+    { action: "mailto:jalmeida0291@gmail.com" },
+    _react2.default.createElement(
+      "h1",
+      null,
+      "Email:"
+    ),
+    _react2.default.createElement(
+      "label",
+      { htmlFor: "name" },
+      "Name:"
+    ),
+    _react2.default.createElement("input", { id: "name", name: "name", type: "text", required: true }),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement(
+      "label",
+      { htmlFor: "email" },
+      "Email"
+    ),
+    _react2.default.createElement("input", { id: "email", name: "email", type: "email", required: true }),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement(
+      "label",
+      { htmlFor: "subject" },
+      "Subject"
+    ),
+    _react2.default.createElement("input", { id: "subject", name: "subject", type: "subject", required: true }),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement("textarea", { required: true }),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement(
+      "button",
+      { type: "submit" },
+      "Send Message"
+    )
+  );
+};
+
+exports.default = form;
+},{"react":"../node_modules/react/index.js"}],"components/Contact.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Form = require("./Form");
+
+var _Form2 = _interopRequireDefault(_Form);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25911,65 +25926,39 @@ var contact = function contact(_ref) {
 
   return _react2.default.createElement(
     "div",
-    {
-      style: {
-        display: "flex",
-        flexFlow: "column nowrap",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "calc(75vh - 37px)"
-      }
-    },
+    { className: "contact" },
     _react2.default.createElement(
       "h1",
-      {
-        style: {
-          textAlign: "center"
-        }
-      },
+      { className: "contact-title" },
       "Contact:"
     ),
     _react2.default.createElement("br", null),
     _react2.default.createElement(
       "p",
-      {
-        style: {
-          textAlign: "center",
-          fontSize: "2rem"
-        }
-      },
+      { className: "contact-intro" },
       "We are located in:"
     ),
     _react2.default.createElement(
       "address",
-      {
-        style: {
-          textAlign: "center",
-          fontSize: "2rem"
-        }
-      },
+      { className: "contact-address" },
       street,
       _react2.default.createElement("br", null),
       city + ", " + state + ", " + zip,
       _react2.default.createElement(
         "p",
-        {
-          style: {
-            textAlign: "center",
-            fontSize: "2rem"
-          }
-        },
+        null,
         _react2.default.createElement("br", null),
         "Our phone number is:"
       ),
       "Phone: ",
       phone
-    )
+    ),
+    _react2.default.createElement(_Form2.default, null)
   );
 };
 
 exports.default = contact;
-},{"react":"../node_modules/react/index.js"}],"components/Error.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Form":"components/Form.js"}],"components/Error.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25994,12 +25983,7 @@ var error = function error(_ref) {
     null,
     _react2.default.createElement(
       "h1",
-      {
-        style: {
-          textAlign: "center",
-          marginTop: "2rem"
-        }
-      },
+      { style: { textAlign: "center", marginTop: "2rem" } },
       "Page not found..."
     )
   );
@@ -26227,7 +26211,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49997' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49235' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

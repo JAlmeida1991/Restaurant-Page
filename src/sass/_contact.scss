@@ -1,0 +1,17 @@
+.contact {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: calc(75vh - 37px);
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.contact-address,
+.contact-intro {
+  text-align: center;
+  font-size: 2rem;
+}

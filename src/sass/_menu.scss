@@ -1,0 +1,18 @@
+.menu-container {
+  width: 95%;
+  margin: 2rem auto;
+}
+
+.menu-title,
+.menu-intro {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.menu-pizza-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-items: center;
+}
