@@ -18,9 +18,8 @@ body {
 .contact {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
-  height: calc(75vh - 37px); }
+  margin-top: 2rem; }
 
 .contact-title {
   text-align: center; }

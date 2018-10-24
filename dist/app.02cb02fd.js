@@ -25851,53 +25851,174 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var form = function form(props) {
-  return _react2.default.createElement(
-    "form",
-    { action: "mailto:jalmeida0291@gmail.com" },
-    _react2.default.createElement(
-      "h1",
-      null,
-      "Email:"
-    ),
-    _react2.default.createElement(
-      "label",
-      { htmlFor: "name" },
-      "Name:"
-    ),
-    _react2.default.createElement("input", { id: "name", name: "name", type: "text", required: true }),
-    _react2.default.createElement("br", null),
-    _react2.default.createElement(
-      "label",
-      { htmlFor: "email" },
-      "Email"
-    ),
-    _react2.default.createElement("input", { id: "email", name: "email", type: "email", required: true }),
-    _react2.default.createElement("br", null),
-    _react2.default.createElement(
-      "label",
-      { htmlFor: "subject" },
-      "Subject"
-    ),
-    _react2.default.createElement("input", { id: "subject", name: "subject", type: "subject", required: true }),
-    _react2.default.createElement("br", null),
-    _react2.default.createElement("textarea", { required: true }),
-    _react2.default.createElement("br", null),
-    _react2.default.createElement(
-      "button",
-      { type: "submit" },
-      "Send Message"
-    )
-  );
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-exports.default = form;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Form = function (_Component) {
+  _inherits(Form, _Component);
+
+  function Form(props) {
+    _classCallCheck(this, Form);
+
+    var _this = _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
+
+    _this.state = {
+      name: { value: "", touched: false },
+      email: { value: "", touched: false },
+      subject: { value: "", touched: false },
+      message: { value: "", touched: false }
+    };
+    _this.handleNameInput = _this.handleNameInput.bind(_this);
+    _this.handleEmailInput = _this.handleEmailInput.bind(_this);
+    _this.handleSubjectInput = _this.handleSubjectInput.bind(_this);
+    _this.handleValidation = _this.handleValidation.bind(_this);
+    return _this;
+  }
+
+  _createClass(Form, [{
+    key: "handleNameInput",
+    value: function handleNameInput(e) {
+      this.setState({ name: { value: e.target.value, touched: true } });
+    }
+  }, {
+    key: "handleEmailInput",
+    value: function handleEmailInput(e) {
+      this.setState({ email: { value: e.target.value, touched: true } });
+    }
+  }, {
+    key: "handleSubjectInput",
+    value: function handleSubjectInput(e) {
+      this.setState({ subject: { value: e.target.value, touched: true } });
+    }
+  }, {
+    key: "handleMessageInput",
+    value: function handleMessageInput(e) {
+      this.setState({ message: { value: e.target.value, touched: true } });
+    }
+  }, {
+    key: "handleValidation",
+    value: function handleValidation(entry) {
+      if (this.state[entry].touched) {
+        if (this.state[entry].value.length > 5) {
+          return {
+            width: "100%",
+            marginBottom: "1rem",
+            padding: "1rem",
+            outlineColor: "blue",
+            borderColor: "blue"
+          };
+        } else {
+          return {
+            width: "100%",
+            marginBottom: "1rem",
+            padding: "1rem",
+            outlineColor: "red",
+            borderColor: "red"
+          };
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "form",
+        {
+          style: {
+            width: "30rem",
+            margin: "auto",
+            marginTop: "2rem"
+          },
+          action: "#",
+          method: "GET"
+        },
+        _react2.default.createElement(
+          "h1",
+          null,
+          "Questions?"
+        ),
+        _react2.default.createElement("input", {
+          style: this.handleValidation("name") || {
+            width: "100%",
+            marginBottom: "1rem",
+            padding: "1rem"
+          },
+          value: this.state.name.value,
+          onChange: this.handleNameInput,
+          placeholder: "Name",
+          name: "name",
+          type: "text",
+          required: true
+        }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("input", {
+          style: this.handleValidation("email") || {
+            width: "100%",
+            marginBottom: "1rem",
+            padding: "1rem"
+          },
+          onChange: this.handleEmailInput,
+          placeholder: "Email",
+          id: "email",
+          type: "email",
+          required: true
+        }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("input", {
+          style: this.handleValidation("subject") || {
+            width: "100%",
+            marginBottom: "1rem",
+            padding: "1rem"
+          },
+          onChange: this.handleSubjectInput,
+          placeholder: "Subject",
+          name: "subject",
+          type: "subject",
+          required: true
+        }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("textarea", {
+          style: {
+            width: "100%",
+            height: "20rem"
+          },
+          required: true
+        }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "button",
+          {
+            style: {
+              padding: "1rem",
+              borderRadius: ".8rem",
+              backgroundColor: "#ccc",
+              outline: "none",
+              display: "block",
+              fontWeight: "bolder"
+            },
+            type: "submit"
+          },
+          "Send Message"
+        )
+      );
+    }
+  }]);
+
+  return Form;
+}(_react.Component);
+
+exports.default = Form;
 },{"react":"../node_modules/react/index.js"}],"components/Contact.js":[function(require,module,exports) {
 "use strict";
 
@@ -25927,20 +26048,12 @@ var contact = function contact(_ref) {
   return _react2.default.createElement(
     "div",
     { className: "contact" },
-    _react2.default.createElement(
-      "h1",
-      { className: "contact-title" },
-      "Contact:"
-    ),
     _react2.default.createElement("br", null),
-    _react2.default.createElement(
-      "p",
-      { className: "contact-intro" },
-      "We are located in:"
-    ),
     _react2.default.createElement(
       "address",
       { className: "contact-address" },
+      "Contact us at:",
+      _react2.default.createElement("br", null),
       street,
       _react2.default.createElement("br", null),
       city + ", " + state + ", " + zip,
@@ -26211,7 +26324,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49235' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49231' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

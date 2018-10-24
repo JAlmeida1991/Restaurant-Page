@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.contact-address,
+.contact-intro {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.menu-container {
+  width: 95%;
+  margin: 2rem auto;
+}
+
+.menu-title,
+.menu-intro {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.menu-pizza-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(350px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-items: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.modal-image {
+  width: 50%;
+  height: auto;
+}
+
+@media screen and (max-width: 40rem) {
+  .modal-image {
+    width: 65%;
+  }
+}
+
+.modal-image-detail {
+  margin-top: 1rem;
+  color: white;
+  font-weight: bold;
+  width: 50%;
+}
+/*# sourceMappingURL=styles.css.map */
