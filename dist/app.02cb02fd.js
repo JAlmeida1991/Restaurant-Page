@@ -25853,6 +25853,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _buttonStyle;
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -25865,6 +25867,34 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var formElStyle = {
+  width: "100%",
+  marginBottom: "1rem",
+  padding: "1rem"
+};
+
+var messageStyle = {
+  width: "100%",
+  height: "20rem",
+  padding: "1rem"
+};
+
+var buttonStyle = (_buttonStyle = {
+  padding: "1rem",
+  borderRadius: ".8rem",
+  backgroundColor: "#ccc",
+  outline: "none",
+  display: "block",
+  fontWeight: "bolder",
+  marginTop: ".5rem"
+}, _defineProperty(_buttonStyle, "backgroundColor", "green"), _defineProperty(_buttonStyle, "color", "white"), _defineProperty(_buttonStyle, "cursor", "pointer"), _buttonStyle);
+
+var disabledButtonStyle = Object.assign({}, buttonStyle);
+disabledButtonStyle.backgroundColor = "silver";
+disabledButtonStyle.cursor = "not-allowed";
+
 var Form = function (_Component) {
   _inherits(Form, _Component);
 
@@ -25874,60 +25904,74 @@ var Form = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
 
     _this.state = {
-      name: { value: "", touched: false },
-      email: { value: "", touched: false },
-      subject: { value: "", touched: false },
-      message: { value: "", touched: false }
+      name: { value: "", touched: false, valid: false },
+      email: { value: "", touched: false, valid: false },
+      subject: { value: "", touched: false, valid: false },
+      message: { value: "", touched: false, valid: false }
     };
-    _this.handleNameInput = _this.handleNameInput.bind(_this);
-    _this.handleEmailInput = _this.handleEmailInput.bind(_this);
-    _this.handleSubjectInput = _this.handleSubjectInput.bind(_this);
-    _this.handleValidation = _this.handleValidation.bind(_this);
+    _this.handleInput = _this.handleInput.bind(_this);
+    _this.handleInputValidation = _this.handleInputValidation.bind(_this);
+    _this.handleMessageValidation = _this.handleMessageValidation.bind(_this);
     return _this;
   }
 
   _createClass(Form, [{
-    key: "handleNameInput",
-    value: function handleNameInput(e) {
-      this.setState({ name: { value: e.target.value, touched: true } });
+    key: "handleInput",
+    value: function handleInput(e) {
+      console.log(e.target.name);
+      this.setState(_defineProperty({}, e.target.name, {
+        value: e.target.value,
+        touched: true,
+        valid: e.target.value.trim().length > 5
+      }));
     }
   }, {
-    key: "handleEmailInput",
-    value: function handleEmailInput(e) {
-      this.setState({ email: { value: e.target.value, touched: true } });
-    }
-  }, {
-    key: "handleSubjectInput",
-    value: function handleSubjectInput(e) {
-      this.setState({ subject: { value: e.target.value, touched: true } });
-    }
-  }, {
-    key: "handleMessageInput",
-    value: function handleMessageInput(e) {
-      this.setState({ message: { value: e.target.value, touched: true } });
-    }
-  }, {
-    key: "handleValidation",
-    value: function handleValidation(entry) {
+    key: "handleInputValidation",
+    value: function handleInputValidation(entry) {
       if (this.state[entry].touched) {
-        if (this.state[entry].value.length > 5) {
-          return {
-            width: "100%",
-            marginBottom: "1rem",
-            padding: "1rem",
-            outlineColor: "blue",
-            borderColor: "blue"
-          };
+        if (this.state[entry].value.trim().length > 5) {
+          var newFormElStyle = Object.assign({}, formElStyle);
+          newFormElStyle.outlineColor = "blue";
+          newFormElStyle.backgroundColor = "deepskyblue";
+          newFormElStyle.borderColor = "blue";
+          return newFormElStyle;
         } else {
-          return {
-            width: "100%",
-            marginBottom: "1rem",
-            padding: "1rem",
-            outlineColor: "red",
-            borderColor: "red"
-          };
+          var _newFormElStyle = Object.assign({}, formElStyle);
+          _newFormElStyle.outlineColor = "red";
+          _newFormElStyle.backgroundColor = "LightCoral";
+          _newFormElStyle.borderColor = "red";
+          return _newFormElStyle;
         }
       }
+    }
+  }, {
+    key: "handleMessageValidation",
+    value: function handleMessageValidation() {
+      if (this.state.message.touched) {
+        if (this.state.message.value.trim().length > 5) {
+          var newFormElStyle = Object.assign({}, messageStyle);
+          newFormElStyle.outlineColor = "blue";
+          newFormElStyle.backgroundColor = "deepskyblue";
+          newFormElStyle.borderColor = "blue";
+          return newFormElStyle;
+        } else {
+          var _newFormElStyle2 = Object.assign({}, messageStyle);
+          _newFormElStyle2.outlineColor = "red";
+          _newFormElStyle2.backgroundColor = "LightCoral";
+          _newFormElStyle2.borderColor = "red";
+          return _newFormElStyle2;
+        }
+      }
+    }
+  }, {
+    key: "handleButtonValidation",
+    value: function handleButtonValidation(_ref) {
+      var name = _ref.name,
+          email = _ref.email,
+          subject = _ref.subject,
+          message = _ref.message;
+
+      return message.valid && subject.valid && email.valid && name.valid;
     }
   }, {
     key: "render",
@@ -25940,22 +25984,18 @@ var Form = function (_Component) {
             margin: "auto",
             marginTop: "2rem"
           },
-          action: "#",
-          method: "GET"
+          action: "mailto:jalmeida0291@gmail.com",
+          method: "POST"
         },
         _react2.default.createElement(
           "h1",
-          null,
+          { style: { marginBottom: ".5rem" } },
           "Questions?"
         ),
         _react2.default.createElement("input", {
-          style: this.handleValidation("name") || {
-            width: "100%",
-            marginBottom: "1rem",
-            padding: "1rem"
-          },
+          style: this.handleInputValidation("name", 3) || formElStyle,
           value: this.state.name.value,
-          onChange: this.handleNameInput,
+          onChange: this.handleInput,
           placeholder: "Name",
           name: "name",
           type: "text",
@@ -25963,25 +26003,17 @@ var Form = function (_Component) {
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("input", {
-          style: this.handleValidation("email") || {
-            width: "100%",
-            marginBottom: "1rem",
-            padding: "1rem"
-          },
-          onChange: this.handleEmailInput,
+          style: this.handleInputValidation("email", 5) || formElStyle,
+          onChange: this.handleInput,
           placeholder: "Email",
-          id: "email",
+          name: "email",
           type: "email",
           required: true
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("input", {
-          style: this.handleValidation("subject") || {
-            width: "100%",
-            marginBottom: "1rem",
-            padding: "1rem"
-          },
-          onChange: this.handleSubjectInput,
+          style: this.handleInputValidation("subject", 5) || formElStyle,
+          onChange: this.handleInput,
           placeholder: "Subject",
           name: "subject",
           type: "subject",
@@ -25989,27 +26021,22 @@ var Form = function (_Component) {
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("textarea", {
-          style: {
-            width: "100%",
-            height: "20rem"
-          },
-          required: true
+          style: this.handleMessageValidation(5) || messageStyle,
+          onChange: this.handleInput,
+          value: this.state.message.value,
+          placeholder: "Message",
+          required: true,
+          name: "message"
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "button",
           {
-            style: {
-              padding: "1rem",
-              borderRadius: ".8rem",
-              backgroundColor: "#ccc",
-              outline: "none",
-              display: "block",
-              fontWeight: "bolder"
-            },
-            type: "submit"
+            style: this.handleButtonValidation(this.state) ? buttonStyle : disabledButtonStyle,
+            type: "submit",
+            disabled: !this.handleButtonValidation(this.state)
           },
-          "Send Message"
+          "Send Question"
         )
       );
     }
@@ -26049,10 +26076,12 @@ var contact = function contact(_ref) {
     "div",
     { className: "contact" },
     _react2.default.createElement("br", null),
+    _react2.default.createElement(_Form2.default, null),
+    _react2.default.createElement("br", null),
     _react2.default.createElement(
       "address",
-      { className: "contact-address" },
-      "Contact us at:",
+      null,
+      "We are located at:",
       _react2.default.createElement("br", null),
       street,
       _react2.default.createElement("br", null),
@@ -26065,8 +26094,7 @@ var contact = function contact(_ref) {
       ),
       "Phone: ",
       phone
-    ),
-    _react2.default.createElement(_Form2.default, null)
+    )
   );
 };
 
@@ -26324,7 +26352,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49231' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49226' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

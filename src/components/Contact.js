@@ -7,9 +7,10 @@ const contact = ({ contact }) => {
   return (
     <div className="contact">
       <br />
-
-      <address className="contact-address">
-        Contact us at:
+      <Form />
+      <br />
+      <address>
+        We are located at:
         <br />
         {street}
         <br />
@@ -20,7 +21,6 @@ const contact = ({ contact }) => {
         </p>
         Phone: {phone}
       </address>
-      <Form />
     </div>
   );
 };
