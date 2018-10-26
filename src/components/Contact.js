@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Form";
+import Form from "./Form/Form";
 
 const contact = ({ contact }) => {
   const { phone, address } = contact;

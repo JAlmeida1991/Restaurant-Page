@@ -25844,30 +25844,27 @@ var home = function home(props) {
 };
 
 exports.default = home;
-},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Form.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Form/emailRegex.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+exports.default = emailRegex;
+},{}],"components/Form/formStyles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _buttonStyle;
 
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// Styles for Name, Email, and Subject
 
 var formElStyle = {
   width: "100%",
@@ -25875,11 +25872,35 @@ var formElStyle = {
   padding: "1rem"
 };
 
+var validFormElStyle = Object.assign({}, formElStyle);
+validFormElStyle.outlineColor = "blue";
+validFormElStyle.backgroundColor = "deepskyblue";
+validFormElStyle.borderColor = "blue";
+
+var invalidFormElStyle = Object.assign({}, formElStyle);
+invalidFormElStyle.outlineColor = "red";
+invalidFormElStyle.backgroundColor = "LightCoral";
+invalidFormElStyle.borderColor = "red";
+
+// Styles for Message
+
 var messageStyle = {
   width: "100%",
   height: "20rem",
   padding: "1rem"
 };
+
+var validMessageStyle = Object.assign({}, messageStyle);
+validMessageStyle.outlineColor = "blue";
+validMessageStyle.backgroundColor = "deepskyblue";
+validMessageStyle.borderColor = "blue";
+
+var invalidMessageStyle = Object.assign({}, messageStyle);
+invalidMessageStyle.outlineColor = "red";
+invalidMessageStyle.backgroundColor = "LightCoral";
+invalidMessageStyle.borderColor = "red";
+
+// Styles for Button
 
 var buttonStyle = (_buttonStyle = {
   padding: "1rem",
@@ -25894,6 +25915,47 @@ var buttonStyle = (_buttonStyle = {
 var disabledButtonStyle = Object.assign({}, buttonStyle);
 disabledButtonStyle.backgroundColor = "silver";
 disabledButtonStyle.cursor = "not-allowed";
+
+exports.formElStyle = formElStyle;
+exports.invalidFormElStyle = invalidFormElStyle;
+exports.validFormElStyle = validFormElStyle;
+exports.messageStyle = messageStyle;
+exports.invalidMessageStyle = invalidMessageStyle;
+exports.validMessageStyle = validMessageStyle;
+exports.buttonStyle = buttonStyle;
+exports.disabledButtonStyle = disabledButtonStyle;
+},{}],"components/Form/Form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _emailRegex = require("./emailRegex");
+
+var _emailRegex2 = _interopRequireDefault(_emailRegex);
+
+var _formStyles = require("./formStyles");
+
+var formStyles = _interopRequireWildcard(_formStyles);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Form = function (_Component) {
   _inherits(Form, _Component);
@@ -25910,7 +25972,9 @@ var Form = function (_Component) {
       message: { value: "", touched: false, valid: false }
     };
     _this.handleInput = _this.handleInput.bind(_this);
+    _this.handleEmailInput = _this.handleEmailInput.bind(_this);
     _this.handleInputValidation = _this.handleInputValidation.bind(_this);
+    _this.handleEmailValidation = _this.handleEmailValidation.bind(_this);
     _this.handleMessageValidation = _this.handleMessageValidation.bind(_this);
     return _this;
   }
@@ -25918,7 +25982,6 @@ var Form = function (_Component) {
   _createClass(Form, [{
     key: "handleInput",
     value: function handleInput(e) {
-      console.log(e.target.name);
       this.setState(_defineProperty({}, e.target.name, {
         value: e.target.value,
         touched: true,
@@ -25926,21 +25989,34 @@ var Form = function (_Component) {
       }));
     }
   }, {
+    key: "handleEmailInput",
+    value: function handleEmailInput(e) {
+      console.log(this.state);
+      this.setState(_defineProperty({}, e.target.name, {
+        value: e.target.value,
+        touched: true,
+        valid: _emailRegex2.default.test(e.target.value)
+      }));
+    }
+  }, {
     key: "handleInputValidation",
     value: function handleInputValidation(entry) {
       if (this.state[entry].touched) {
         if (this.state[entry].value.trim().length > 5) {
-          var newFormElStyle = Object.assign({}, formElStyle);
-          newFormElStyle.outlineColor = "blue";
-          newFormElStyle.backgroundColor = "deepskyblue";
-          newFormElStyle.borderColor = "blue";
-          return newFormElStyle;
+          return formStyles.validFormElStyle;
         } else {
-          var _newFormElStyle = Object.assign({}, formElStyle);
-          _newFormElStyle.outlineColor = "red";
-          _newFormElStyle.backgroundColor = "LightCoral";
-          _newFormElStyle.borderColor = "red";
-          return _newFormElStyle;
+          return formStyles.invalidFormElStyle;
+        }
+      }
+    }
+  }, {
+    key: "handleEmailValidation",
+    value: function handleEmailValidation() {
+      if (this.state.email.touched) {
+        if (_emailRegex2.default.test(this.state.email.value)) {
+          return formStyles.validFormElStyle;
+        } else {
+          return formStyles.invalidFormElStyle;
         }
       }
     }
@@ -25949,20 +26025,15 @@ var Form = function (_Component) {
     value: function handleMessageValidation() {
       if (this.state.message.touched) {
         if (this.state.message.value.trim().length > 5) {
-          var newFormElStyle = Object.assign({}, messageStyle);
-          newFormElStyle.outlineColor = "blue";
-          newFormElStyle.backgroundColor = "deepskyblue";
-          newFormElStyle.borderColor = "blue";
-          return newFormElStyle;
+          return formStyles.validMessageStyle;
         } else {
-          var _newFormElStyle2 = Object.assign({}, messageStyle);
-          _newFormElStyle2.outlineColor = "red";
-          _newFormElStyle2.backgroundColor = "LightCoral";
-          _newFormElStyle2.borderColor = "red";
-          return _newFormElStyle2;
+          return formStyles.invalidMessageStyle;
         }
       }
     }
+
+    // Don't need to bind this since not referencing state
+
   }, {
     key: "handleButtonValidation",
     value: function handleButtonValidation(_ref) {
@@ -25979,11 +26050,7 @@ var Form = function (_Component) {
       return _react2.default.createElement(
         "form",
         {
-          style: {
-            width: "30rem",
-            margin: "auto",
-            marginTop: "2rem"
-          },
+          className: "form",
           action: "mailto:jalmeida0291@gmail.com",
           method: "POST"
         },
@@ -25993,7 +26060,7 @@ var Form = function (_Component) {
           "Questions?"
         ),
         _react2.default.createElement("input", {
-          style: this.handleInputValidation("name", 3) || formElStyle,
+          style: this.handleInputValidation("name") || formStyles.formElStyle,
           value: this.state.name.value,
           onChange: this.handleInput,
           placeholder: "Name",
@@ -26003,8 +26070,8 @@ var Form = function (_Component) {
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("input", {
-          style: this.handleInputValidation("email", 5) || formElStyle,
-          onChange: this.handleInput,
+          style: this.handleEmailValidation() || formStyles.formElStyle,
+          onChange: this.handleEmailInput,
           placeholder: "Email",
           name: "email",
           type: "email",
@@ -26012,7 +26079,7 @@ var Form = function (_Component) {
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("input", {
-          style: this.handleInputValidation("subject", 5) || formElStyle,
+          style: this.handleInputValidation("subject") || formStyles.formElStyle,
           onChange: this.handleInput,
           placeholder: "Subject",
           name: "subject",
@@ -26021,7 +26088,7 @@ var Form = function (_Component) {
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("textarea", {
-          style: this.handleMessageValidation(5) || messageStyle,
+          style: this.handleMessageValidation() || formStyles.messageStyle,
           onChange: this.handleInput,
           value: this.state.message.value,
           placeholder: "Message",
@@ -26032,7 +26099,7 @@ var Form = function (_Component) {
         _react2.default.createElement(
           "button",
           {
-            style: this.handleButtonValidation(this.state) ? buttonStyle : disabledButtonStyle,
+            style: this.handleButtonValidation(this.state) ? formStyles.buttonStyle : formStyles.disabledButtonStyle,
             type: "submit",
             disabled: !this.handleButtonValidation(this.state)
           },
@@ -26046,7 +26113,7 @@ var Form = function (_Component) {
 }(_react.Component);
 
 exports.default = Form;
-},{"react":"../node_modules/react/index.js"}],"components/Contact.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./emailRegex":"components/Form/emailRegex.js","./formStyles":"components/Form/formStyles.js"}],"components/Contact.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26057,7 +26124,7 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Form = require("./Form");
+var _Form = require("./Form/Form");
 
 var _Form2 = _interopRequireDefault(_Form);
 
@@ -26099,7 +26166,7 @@ var contact = function contact(_ref) {
 };
 
 exports.default = contact;
-},{"react":"../node_modules/react/index.js","./Form":"components/Form.js"}],"components/Error.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Form/Form":"components/Form/Form.js"}],"components/Error.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26352,7 +26419,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49226' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53926' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

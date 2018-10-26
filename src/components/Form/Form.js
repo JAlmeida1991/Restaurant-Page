@@ -1,33 +1,7 @@
 import React, { Component } from "react";
 
-const formElStyle = {
-  width: "100%",
-  marginBottom: "1rem",
-  padding: "1rem"
-};
-
-const messageStyle = {
-  width: "100%",
-  height: "20rem",
-  padding: "1rem"
-};
-
-const buttonStyle = {
-  padding: "1rem",
-  borderRadius: ".8rem",
-  backgroundColor: "#ccc",
-  outline: "none",
-  display: "block",
-  fontWeight: "bolder",
-  marginTop: ".5rem",
-  backgroundColor: "green",
-  color: "white",
-  cursor: "pointer"
-};
-
-const disabledButtonStyle = Object.assign({}, buttonStyle);
-disabledButtonStyle.backgroundColor = "silver";
-disabledButtonStyle.cursor = "not-allowed";
+import emailRegex from "./emailRegex";
+import * as formStyles from "./formStyles";
 
 class Form extends Component {
   constructor(props) {
@@ -39,12 +13,13 @@ class Form extends Component {
       message: { value: "", touched: false, valid: false }
     };
     this.handleInput = this.handleInput.bind(this);
+    this.handleEmailInput = this.handleEmailInput.bind(this);
     this.handleInputValidation = this.handleInputValidation.bind(this);
+    this.handleEmailValidation = this.handleEmailValidation.bind(this);
     this.handleMessageValidation = this.handleMessageValidation.bind(this);
   }
 
   handleInput(e) {
-    console.log(e.target.name);
     this.setState({
       [e.target.name]: {
         value: e.target.value,
@@ -54,20 +29,33 @@ class Form extends Component {
     });
   }
 
+  handleEmailInput(e) {
+    console.log(this.state);
+    this.setState({
+      [e.target.name]: {
+        value: e.target.value,
+        touched: true,
+        valid: emailRegex.test(e.target.value)
+      }
+    });
+  }
+
   handleInputValidation(entry) {
     if (this.state[entry].touched) {
       if (this.state[entry].value.trim().length > 5) {
-        const newFormElStyle = Object.assign({}, formElStyle);
-        newFormElStyle.outlineColor = "blue";
-        newFormElStyle.backgroundColor = "deepskyblue";
-        newFormElStyle.borderColor = "blue";
-        return newFormElStyle;
+        return formStyles.validFormElStyle;
       } else {
-        const newFormElStyle = Object.assign({}, formElStyle);
-        newFormElStyle.outlineColor = "red";
-        newFormElStyle.backgroundColor = "LightCoral";
-        newFormElStyle.borderColor = "red";
-        return newFormElStyle;
+        return formStyles.invalidFormElStyle;
+      }
+    }
+  }
+
+  handleEmailValidation() {
+    if (this.state.email.touched) {
+      if (emailRegex.test(this.state.email.value)) {
+        return formStyles.validFormElStyle;
+      } else {
+        return formStyles.invalidFormElStyle;
       }
     }
   }
@@ -75,20 +63,14 @@ class Form extends Component {
   handleMessageValidation() {
     if (this.state.message.touched) {
       if (this.state.message.value.trim().length > 5) {
-        const newFormElStyle = Object.assign({}, messageStyle);
-        newFormElStyle.outlineColor = "blue";
-        newFormElStyle.backgroundColor = "deepskyblue";
-        newFormElStyle.borderColor = "blue";
-        return newFormElStyle;
+        return formStyles.validMessageStyle;
       } else {
-        const newFormElStyle = Object.assign({}, messageStyle);
-        newFormElStyle.outlineColor = "red";
-        newFormElStyle.backgroundColor = "LightCoral";
-        newFormElStyle.borderColor = "red";
-        return newFormElStyle;
+        return formStyles.invalidMessageStyle;
       }
     }
   }
+
+  // Don't need to bind this since not referencing state
 
   handleButtonValidation({ name, email, subject, message }) {
     return message.valid && subject.valid && email.valid && name.valid;
@@ -97,18 +79,14 @@ class Form extends Component {
   render() {
     return (
       <form
-        style={{
-          width: "30rem",
-          margin: "auto",
-          marginTop: "2rem"
-        }}
+        className="form"
         action="mailto:jalmeida0291@gmail.com"
         method="POST"
       >
         <h1 style={{ marginBottom: ".5rem" }}>Questions?</h1>
 
         <input
-          style={this.handleInputValidation("name", 3) || formElStyle}
+          style={this.handleInputValidation("name") || formStyles.formElStyle}
           value={this.state.name.value}
           onChange={this.handleInput}
           placeholder="Name"
@@ -119,8 +97,8 @@ class Form extends Component {
         <br />
 
         <input
-          style={this.handleInputValidation("email", 5) || formElStyle}
-          onChange={this.handleInput}
+          style={this.handleEmailValidation() || formStyles.formElStyle}
+          onChange={this.handleEmailInput}
           placeholder="Email"
           name="email"
           type="email"
@@ -129,7 +107,9 @@ class Form extends Component {
         <br />
 
         <input
-          style={this.handleInputValidation("subject", 5) || formElStyle}
+          style={
+            this.handleInputValidation("subject") || formStyles.formElStyle
+          }
           onChange={this.handleInput}
           placeholder="Subject"
           name="subject"
@@ -138,7 +118,7 @@ class Form extends Component {
         />
         <br />
         <textarea
-          style={this.handleMessageValidation(5) || messageStyle}
+          style={this.handleMessageValidation() || formStyles.messageStyle}
           onChange={this.handleInput}
           value={this.state.message.value}
           placeholder="Message"
@@ -150,8 +130,8 @@ class Form extends Component {
         <button
           style={
             this.handleButtonValidation(this.state)
-              ? buttonStyle
-              : disabledButtonStyle
+              ? formStyles.buttonStyle
+              : formStyles.disabledButtonStyle
           }
           type="submit"
           disabled={!this.handleButtonValidation(this.state)}
