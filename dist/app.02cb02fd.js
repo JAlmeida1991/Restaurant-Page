@@ -25738,7 +25738,7 @@ var Menu = function (_Component) {
               ),
               _react2.default.createElement("img", {
                 src: pizza,
-                style: { width: "100%", cursor: "pointer" },
+                style: { width: "100%", cursor: "pointer", display: "block" },
                 onClick: function onClick() {
                   return _this2.showModalHandler(index);
                 }
@@ -25802,7 +25802,7 @@ var home = function home(props) {
           marginTop: "2rem",
           position: "relative",
           fontSize: "4rem",
-          color: "#fff",
+          color: "white",
           zIndex: "1000"
         }
       },
@@ -25816,7 +25816,7 @@ var home = function home(props) {
           marginTop: " 1rem",
           position: "relative",
           fontSize: "2rem",
-          color: "#fff",
+          color: "white",
           zIndex: "1000"
         }
       },
@@ -25826,11 +25826,12 @@ var home = function home(props) {
       "video",
       {
         style: {
-          position: "fixed",
+          position: "absolute",
           right: "0",
           bottom: "0",
           minWidth: "100%",
-          minHeight: "100%"
+          minHeight: "100%",
+          opacity: ".9"
         },
         muted: true,
         loop: true,
@@ -26198,6 +26199,41 @@ var error = function error(_ref) {
 };
 
 exports.default = error;
+},{"react":"../node_modules/react/index.js"}],"components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var footer = function footer(props) {
+  return _react2.default.createElement(
+    "footer",
+    {
+      style: {
+        position: "absolute",
+        bottom: "0",
+        left: "0",
+        padding: "1rem",
+        color: "white",
+        fontWeight: "bolder"
+      }
+    },
+    _react2.default.createElement(
+      "p",
+      null,
+      "Copyright \xA9 John's One Stop Pizza Place"
+    )
+  );
+};
+
+exports.default = footer;
 },{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
@@ -26246,6 +26282,10 @@ var _Contact2 = _interopRequireDefault(_Contact);
 var _Error = require("./Error");
 
 var _Error2 = _interopRequireDefault(_Error);
+
+var _Footer = require("./Footer");
+
+var _Footer2 = _interopRequireDefault(_Footer);
 
 var _pizza = require("../images/pizza1.jpg");
 
@@ -26335,7 +26375,8 @@ var Page = function (_Component) {
           }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { component: _Error2.default })
-        )
+        ),
+        _react2.default.createElement(_Footer2.default, null)
       );
     }
   }]);
@@ -26344,7 +26385,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./NavBar":"components/NavBar.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","./Error":"components/Error.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./NavBar":"components/NavBar.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","./Error":"components/Error.js","./Footer":"components/Footer.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26419,7 +26460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53926' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52262' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

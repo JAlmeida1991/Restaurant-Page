@@ -48,7 +48,7 @@ class Menu extends Component {
               </h2>
               <img
                 src={pizza}
-                style={{ width: "100%", cursor: "pointer" }}
+                style={{ width: "100%", cursor: "pointer", display: "block" }}
                 onClick={() => this.showModalHandler(index)}
               />
             </div>

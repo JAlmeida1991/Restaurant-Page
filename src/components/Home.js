@@ -13,7 +13,7 @@ const home = props => {
           marginTop: "2rem",
           position: "relative",
           fontSize: "4rem",
-          color: "#fff",
+          color: "white",
           zIndex: "1000"
         }}
       >
@@ -25,7 +25,7 @@ const home = props => {
           marginTop: " 1rem",
           position: "relative",
           fontSize: "2rem",
-          color: "#fff",
+          color: "white",
           zIndex: "1000"
         }}
       >
@@ -33,11 +33,12 @@ const home = props => {
       </p>
       <video
         style={{
-          position: "fixed",
+          position: "absolute",
           right: "0",
           bottom: "0",
           minWidth: "100%",
-          minHeight: "100%"
+          minHeight: "100%",
+          opacity: ".9"
         }}
         muted
         loop

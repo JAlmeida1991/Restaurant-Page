@@ -6,6 +6,7 @@ import Menu from "./Menu";
 import Home from "./Home";
 import Contact from "./Contact";
 import Error_Page from "./Error";
+import Footer from "./Footer";
 
 import pizza1 from "../images/pizza1.jpg";
 import pizza2 from "../images/pizza2.jpg";
@@ -57,6 +58,7 @@ class Page extends Component {
 
           <Route component={Error_Page} />
         </Switch>
+        <Footer />
       </div>
     );
   }
