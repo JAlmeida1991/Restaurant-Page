@@ -1,5 +1,118 @@
-@media screen and (max-width: 40em) {
-  video {
-    visibility: hidden;
+@mixin displayNone {
+  @media only screen and (max-width: 30em) {
+    display: none;
   }
+}
+
+.home {
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &-title {
+    text-align: center;
+    font-size: 7rem;
+    color: #111;
+  }
+}
+
+%pepperoni {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0.3;
+  position: absolute;
+}
+
+.pepperoni-1 {
+  @extend %pepperoni;
+  top: 2rem;
+}
+
+.pepperoni-2 {
+  @extend %pepperoni;
+  bottom: 2rem;
+}
+.pepperoni-3 {
+  @extend %pepperoni;
+  left: 2rem;
+}
+.pepperoni-4 {
+  @extend %pepperoni;
+  position: absolute;
+  right: 2rem;
+}
+
+.pepperoni-5 {
+  @extend %pepperoni;
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.pepperoni-6 {
+  @extend %pepperoni;
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+}
+
+.pepperoni-7 {
+  @extend %pepperoni;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.pepperoni-8 {
+  @extend %pepperoni;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+.pepperoni-9 {
+  @extend %pepperoni;
+}
+
+.pepperoni-10 {
+  @extend %pepperoni;
+  top: 2rem;
+  right: 25%;
+  @include displayNone;
+}
+
+.pepperoni-11 {
+  @extend %pepperoni;
+  bottom: 2rem;
+  right: 25%;
+  @include displayNone;
+}
+
+.pepperoni-12 {
+  @extend %pepperoni;
+  top: 2rem;
+  left: 25%;
+  @include displayNone;
+}
+
+.pepperoni-13 {
+  @extend %pepperoni;
+  bottom: 2rem;
+  left: 25%;
+  @include displayNone;
+}
+
+.pepperoni-14 {
+  @extend %pepperoni;
+  right: 25%;
+  @include displayNone;
+}
+.pepperoni-15 {
+  @extend %pepperoni;
+  left: 25%;
+  @include displayNone;
 }

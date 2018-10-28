@@ -1,55 +1,51 @@
 import React from "react";
 
-import Tomato from "../video/MP4/Tomato.mp4";
-import Tomato2 from "../video/OGV/Tomato.ogv";
-import Tomato3 from "../video/WEBM/Tomato.webm";
+const Home = props => (
+  <React.Fragment>
+    <div className="home">
+      <div className=" pepperoni-1" />
+      <div className=" pepperoni-2" />
+      <div className=" pepperoni-3" />
+      <div className=" pepperoni-4" />
+      <div className=" pepperoni-5" />
+      <div className=" pepperoni-6" />
+      <div className=" pepperoni-7" />
+      <div className=" pepperoni-8" />
+      <div className=" pepperoni-9" />
 
-const home = props => {
-  return (
-    <div>
-      <h1
-        style={{
-          textAlign: "center",
-          marginTop: "2rem",
-          position: "relative",
-          fontSize: "4rem",
-          color: "white",
-          zIndex: "1000"
-        }}
-      >
-        John's One Stop Pizza Place
-      </h1>
+      <div className=" pepperoni-10" />
+      <div className=" pepperoni-11" />
+      <div className=" pepperoni-12" />
+      <div className=" pepperoni-13" />
+      <div className=" pepperoni-14" />
+      <div className=" pepperoni-15" />
+
+      <h1 className="home-title">John's One Stop Pizza Place</h1>
       <p
         style={{
           textAlign: "center",
           marginTop: " 1rem",
           position: "relative",
           fontSize: "2rem",
-          color: "white",
-          zIndex: "1000"
+          color: "#111"
         }}
       >
-        We use the freshest tomato sauce sauce to make our Pizza!
+        We use the freshest ingredients to make our Pizza!
       </p>
-      <video
+      <div
         style={{
           position: "absolute",
-          right: "0",
-          bottom: "0",
-          minWidth: "100%",
-          minHeight: "100%",
-          opacity: ".9"
+          top: "0",
+          left: "0",
+          width: "100%",
+          hieght: "100%",
+          opacity: ".8",
+          overflow: "hidden",
+          zIndex: "-1"
         }}
-        muted
-        loop
-        autoPlay
-      >
-        <source src={Tomato} type="video/mp4" />
-        <source src={Tomato2} type="video/ogv" />
-        <source src={Tomato3} type="video/webm" />
-      </video>
+      />
     </div>
-  );
-};
+  </React.Fragment>
+);
 
-export default home;
+export default Home;

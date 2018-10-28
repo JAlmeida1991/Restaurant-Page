@@ -1,7 +1,6 @@
 import React from "react";
 
-const error = ({ history }) => {
-  console.log(history);
+const ErrorPage = ({ history }) => {
   setTimeout(() => {
     history.replace("/");
   }, 2000);
@@ -14,4 +13,4 @@ const error = ({ history }) => {
   );
 };
 
-export default error;
+export default ErrorPage;

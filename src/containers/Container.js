@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import Page from "../components/Page";
+import Page from "./Page";
 
-const container = props => {
-  return (
-    <BrowserRouter>
-      <Page />
-    </BrowserRouter>
-  );
-};
+const container = props => (
+  <BrowserRouter>
+    <Page />
+  </BrowserRouter>
+);
 
 export default container;

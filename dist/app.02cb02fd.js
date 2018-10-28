@@ -21151,7 +21151,73 @@ if ('development' === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/warning/warning.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"sass/styles.scss":[function(require,module,exports) {
+
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/warning/warning.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -25522,73 +25588,58 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var navbar = function navbar(props) {
+var Navbar = function Navbar(props) {
   return _react2.default.createElement(
-    "ul",
-    {
-      style: {
-        display: "flex",
-        justifyContent: "space-evenly",
-        listStyle: "none",
-        backgroundColor: "#f39c12",
-        padding: "1rem",
-        position: "relative",
-        zIndex: 9999
-      }
-    },
+    "nav",
+    { className: "nav" },
     _react2.default.createElement(
-      "li",
-      null,
+      "ul",
+      { className: "nav-list" },
       _react2.default.createElement(
-        _reactRouterDom.NavLink,
-        {
-          exact: true,
-          style: { color: "blue" },
-          activeStyle: {
-            color: "red",
-            fontWeight: "bold"
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          {
+            exact: true,
+            style: { color: "blue" },
+            activeStyle: { color: "red", fontWeight: "bold" },
+            to: "/"
           },
-          to: "/"
-        },
-        "Home"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      null,
+          "Home"
+        )
+      ),
       _react2.default.createElement(
-        _reactRouterDom.NavLink,
-        {
-          style: { color: "blue" },
-          activeStyle: {
-            color: "red",
-            fontWeight: "bold"
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          {
+            style: { color: "blue" },
+            activeStyle: { color: "red", fontWeight: "bold" },
+            to: "/menu"
           },
-          to: "/menu"
-        },
-        "Menu"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      null,
+          "Menu"
+        )
+      ),
       _react2.default.createElement(
-        _reactRouterDom.NavLink,
-        {
-          style: { color: "blue" },
-          activeStyle: {
-            color: "red",
-            fontWeight: "bold"
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          {
+            style: { color: "blue" },
+            activeStyle: { color: "red", fontWeight: "bold" },
+            to: "/contact"
           },
-          to: "/contact"
-        },
-        "Contact"
+          "Contact"
+        )
       )
     )
   );
 };
 
-exports.default = navbar;
+exports.default = Navbar;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
 
@@ -25602,8 +25653,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var modal = function modal(props) {
-  console.log(props);
+var Modal = function Modal(props) {
   return _react2.default.createElement(
     "div",
     { onClick: props.removeModal, className: "modal" },
@@ -25626,7 +25676,7 @@ var modal = function modal(props) {
   );
 };
 
-exports.default = modal;
+exports.default = Modal;
 },{"react":"../node_modules/react/index.js"}],"components/Menu.js":[function(require,module,exports) {
 "use strict";
 
@@ -25759,13 +25809,7 @@ var Menu = function (_Component) {
 }(_react.Component);
 
 exports.default = Menu;
-},{"react":"../node_modules/react/index.js","./Modal":"components/Modal.js"}],"video/MP4/Tomato.mp4":[function(require,module,exports) {
-module.exports = "/Tomato.9a578ed7.mp4";
-},{}],"video/OGV/Tomato.ogv":[function(require,module,exports) {
-module.exports = "/Tomato.4fb16f75.ogv";
-},{}],"video/WEBM/Tomato.webm":[function(require,module,exports) {
-module.exports = "/Tomato.5fb0c169.webm";
-},{}],"components/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Modal":"components/Modal.js"}],"components/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25776,76 +25820,66 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Tomato = require("../video/MP4/Tomato.mp4");
-
-var _Tomato2 = _interopRequireDefault(_Tomato);
-
-var _Tomato3 = require("../video/OGV/Tomato.ogv");
-
-var _Tomato4 = _interopRequireDefault(_Tomato3);
-
-var _Tomato5 = require("../video/WEBM/Tomato.webm");
-
-var _Tomato6 = _interopRequireDefault(_Tomato5);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var home = function home(props) {
+var Home = function Home(props) {
   return _react2.default.createElement(
-    "div",
+    _react2.default.Fragment,
     null,
     _react2.default.createElement(
-      "h1",
-      {
-        style: {
-          textAlign: "center",
-          marginTop: "2rem",
-          position: "relative",
-          fontSize: "4rem",
-          color: "white",
-          zIndex: "1000"
-        }
-      },
-      "John's One Stop Pizza Place"
-    ),
-    _react2.default.createElement(
-      "p",
-      {
-        style: {
-          textAlign: "center",
-          marginTop: " 1rem",
-          position: "relative",
-          fontSize: "2rem",
-          color: "white",
-          zIndex: "1000"
-        }
-      },
-      "We use the freshest tomato sauce sauce to make our Pizza!"
-    ),
-    _react2.default.createElement(
-      "video",
-      {
+      "div",
+      { className: "home" },
+      _react2.default.createElement("div", { className: " pepperoni-1" }),
+      _react2.default.createElement("div", { className: " pepperoni-2" }),
+      _react2.default.createElement("div", { className: " pepperoni-3" }),
+      _react2.default.createElement("div", { className: " pepperoni-4" }),
+      _react2.default.createElement("div", { className: " pepperoni-5" }),
+      _react2.default.createElement("div", { className: " pepperoni-6" }),
+      _react2.default.createElement("div", { className: " pepperoni-7" }),
+      _react2.default.createElement("div", { className: " pepperoni-8" }),
+      _react2.default.createElement("div", { className: " pepperoni-9" }),
+      _react2.default.createElement("div", { className: " pepperoni-10" }),
+      _react2.default.createElement("div", { className: " pepperoni-11" }),
+      _react2.default.createElement("div", { className: " pepperoni-12" }),
+      _react2.default.createElement("div", { className: " pepperoni-13" }),
+      _react2.default.createElement("div", { className: " pepperoni-14" }),
+      _react2.default.createElement("div", { className: " pepperoni-15" }),
+      _react2.default.createElement(
+        "h1",
+        { className: "home-title" },
+        "John's One Stop Pizza Place"
+      ),
+      _react2.default.createElement(
+        "p",
+        {
+          style: {
+            textAlign: "center",
+            marginTop: " 1rem",
+            position: "relative",
+            fontSize: "2rem",
+            color: "#111"
+          }
+        },
+        "We use the freshest ingredients to make our Pizza!"
+      ),
+      _react2.default.createElement("div", {
         style: {
           position: "absolute",
-          right: "0",
-          bottom: "0",
-          minWidth: "100%",
-          minHeight: "100%",
-          opacity: ".9"
-        },
-        muted: true,
-        loop: true,
-        autoPlay: true
-      },
-      _react2.default.createElement("source", { src: _Tomato2.default, type: "video/mp4" }),
-      _react2.default.createElement("source", { src: _Tomato4.default, type: "video/ogv" }),
-      _react2.default.createElement("source", { src: _Tomato6.default, type: "video/webm" })
+          top: "0",
+          left: "0",
+          width: "100%",
+          hieght: "100%",
+          opacity: ".8",
+          overflow: "hidden",
+          zIndex: "-1"
+        }
+      })
     )
   );
 };
 
-exports.default = home;
-},{"react":"../node_modules/react/index.js","../video/MP4/Tomato.mp4":"video/MP4/Tomato.mp4","../video/OGV/Tomato.ogv":"video/OGV/Tomato.ogv","../video/WEBM/Tomato.webm":"video/WEBM/Tomato.webm"}],"components/Form/emailRegex.js":[function(require,module,exports) {
+exports.default = Home;
+},{"react":"../node_modules/react/index.js"}],"components/Form/emailRegex.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26131,7 +26165,7 @@ var _Form2 = _interopRequireDefault(_Form);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var contact = function contact(_ref) {
+var Contact = function Contact(_ref) {
   var contact = _ref.contact;
   var phone = contact.phone,
       address = contact.address;
@@ -26143,30 +26177,33 @@ var contact = function contact(_ref) {
   return _react2.default.createElement(
     "div",
     { className: "contact" },
-    _react2.default.createElement("br", null),
-    _react2.default.createElement(_Form2.default, null),
-    _react2.default.createElement("br", null),
     _react2.default.createElement(
-      "address",
+      "div",
       null,
-      "We are located at:",
+      _react2.default.createElement(_Form2.default, null),
       _react2.default.createElement("br", null),
-      street,
-      _react2.default.createElement("br", null),
-      city + ", " + state + ", " + zip,
       _react2.default.createElement(
-        "p",
+        "address",
         null,
+        "We are located at:",
         _react2.default.createElement("br", null),
-        "Our phone number is:"
-      ),
-      "Phone: ",
-      phone
+        street,
+        _react2.default.createElement("br", null),
+        city + ", " + state + ", " + zip,
+        _react2.default.createElement(
+          "p",
+          null,
+          _react2.default.createElement("br", null),
+          "Our phone number is:"
+        ),
+        "Phone: ",
+        phone
+      )
     )
   );
 };
 
-exports.default = contact;
+exports.default = Contact;
 },{"react":"../node_modules/react/index.js","./Form/Form":"components/Form/Form.js"}],"components/Error.js":[function(require,module,exports) {
 "use strict";
 
@@ -26180,10 +26217,9 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var error = function error(_ref) {
+var ErrorPage = function ErrorPage(_ref) {
   var history = _ref.history;
 
-  console.log(history);
   setTimeout(function () {
     history.replace("/");
   }, 2000);
@@ -26198,7 +26234,7 @@ var error = function error(_ref) {
   );
 };
 
-exports.default = error;
+exports.default = ErrorPage;
 },{"react":"../node_modules/react/index.js"}],"components/Footer.js":[function(require,module,exports) {
 "use strict";
 
@@ -26212,19 +26248,10 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var footer = function footer(props) {
+var Footer = function Footer(props) {
   return _react2.default.createElement(
     "footer",
-    {
-      style: {
-        position: "absolute",
-        bottom: "0",
-        left: "0",
-        padding: "1rem",
-        color: "white",
-        fontWeight: "bolder"
-      }
-    },
+    { className: "footer" },
     _react2.default.createElement(
       "p",
       null,
@@ -26233,7 +26260,7 @@ var footer = function footer(props) {
   );
 };
 
-exports.default = footer;
+exports.default = Footer;
 },{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
@@ -26246,7 +26273,7 @@ module.exports = "/pizza4.31f098e9.jpg";
 module.exports = "/pizza5.345368ad.jpg";
 },{}],"images/pizza6.jpg":[function(require,module,exports) {
 module.exports = "/pizza6.af143f03.jpg";
-},{}],"components/Page.js":[function(require,module,exports) {
+},{}],"containers/Page.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26263,27 +26290,27 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require("react-router-dom");
 
-var _NavBar = require("./NavBar");
+var _NavBar = require("../components/NavBar");
 
 var _NavBar2 = _interopRequireDefault(_NavBar);
 
-var _Menu = require("./Menu");
+var _Menu = require("../components/Menu");
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Home = require("./Home");
+var _Home = require("../components/Home");
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Contact = require("./Contact");
+var _Contact = require("../components/Contact");
 
 var _Contact2 = _interopRequireDefault(_Contact);
 
-var _Error = require("./Error");
+var _Error = require("../components/Error");
 
 var _Error2 = _interopRequireDefault(_Error);
 
-var _Footer = require("./Footer");
+var _Footer = require("../components/Footer");
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -26331,7 +26358,7 @@ var Page = function (_Component) {
       pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default],
       contact: {
         address: {
-          street: "101 Main Street",
+          street: Math.round(Math.random() * 300) + " Main Street",
           city: "New York",
           state: "NY",
           zip: "10101"
@@ -26343,17 +26370,12 @@ var Page = function (_Component) {
   }
 
   _createClass(Page, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // console.log(this.state.pizzas);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       return _react2.default.createElement(
-        "div",
+        _react.Fragment,
         null,
         _react2.default.createElement(_NavBar2.default, null),
         _react2.default.createElement(
@@ -26385,7 +26407,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./NavBar":"components/NavBar.js","./Menu":"components/Menu.js","./Home":"components/Home.js","./Contact":"components/Contact.js","./Error":"components/Error.js","./Footer":"components/Footer.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26398,7 +26420,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Page = require("../components/Page");
+var _Page = require("./Page");
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -26413,7 +26435,7 @@ var container = function container(props) {
 };
 
 exports.default = container;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/Page":"components/Page.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./Page":"containers/Page.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _react = require("react");
@@ -26424,14 +26446,16 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+require("./sass/styles.scss");
+
 var _Container = require("./containers/Container");
 
 var _Container2 = _interopRequireDefault(_Container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_Container2.default, null), document.getElementById("app"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./containers/Container":"containers/Container.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom2.default.render(_react2.default.createElement(_Container2.default, null), document.getElementById("root"));
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./sass/styles.scss":"sass/styles.scss","./containers/Container":"containers/Container.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -26460,7 +26484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52262' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58879' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

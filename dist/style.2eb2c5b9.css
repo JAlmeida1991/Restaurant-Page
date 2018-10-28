@@ -9,18 +9,109 @@ html {
 body {
   font-size: 1.5rem;
   font-family: sans-serif;
-  background-color: #eee; }
+  background-color: #ffe4b3; }
 
-html,
-body {
-  height: 100%; }
+.nav {
+  background-color: #f39c12;
+  padding: 1rem; }
 
-.contact {
+.nav-list {
   display: flex;
-  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  list-style: none; }
+
+.home {
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-  font-size: 1.8rem; }
+  position: relative; }
+  .home-title {
+    text-align: center;
+    font-size: 7rem;
+    color: #111; }
+
+.pepperoni-1, .pepperoni-2, .pepperoni-3, .pepperoni-4, .pepperoni-5, .pepperoni-6, .pepperoni-7, .pepperoni-8, .pepperoni-9, .pepperoni-10, .pepperoni-11, .pepperoni-12, .pepperoni-13, .pepperoni-14, .pepperoni-15 {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0.3;
+  position: absolute; }
+
+.pepperoni-1 {
+  top: 2rem; }
+
+.pepperoni-2 {
+  bottom: 2rem; }
+
+.pepperoni-3 {
+  left: 2rem; }
+
+.pepperoni-4 {
+  position: absolute;
+  right: 2rem; }
+
+.pepperoni-5 {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem; }
+
+.pepperoni-6 {
+  position: absolute;
+  left: 2rem;
+  top: 2rem; }
+
+.pepperoni-7 {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem; }
+
+.pepperoni-8 {
+  position: absolute;
+  right: 2rem;
+  top: 2rem; }
+
+.pepperoni-10 {
+  top: 2rem;
+  right: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-10 {
+      display: none; } }
+
+.pepperoni-11 {
+  bottom: 2rem;
+  right: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-11 {
+      display: none; } }
+
+.pepperoni-12 {
+  top: 2rem;
+  left: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-12 {
+      display: none; } }
+
+.pepperoni-13 {
+  bottom: 2rem;
+  left: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-13 {
+      display: none; } }
+
+.pepperoni-14 {
+  right: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-14 {
+      display: none; } }
+
+.pepperoni-15 {
+  left: 25%; }
+  @media only screen and (max-width: 30em) {
+    .pepperoni-15 {
+      display: none; } }
 
 .menu-container {
   width: 95%;
@@ -66,10 +157,18 @@ body {
 
 .form {
   width: 30rem;
-  margin: auto;
-  margin-top: 2rem; }
+  margin: auto; }
 
-@media screen and (max-width: 40em) {
-  video {
-    visibility: hidden; } }
+.contact {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  height: calc(100vh - 75px); }
+
+.footer {
+  padding: 1rem;
+  font-weight: bold;
+  background-color: orange; }
 
