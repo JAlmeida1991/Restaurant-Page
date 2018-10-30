@@ -36,4 +36,14 @@ const Navbar = props => (
   </nav>
 );
 
+/* <li>
+        <NavLink
+          style={{ color: "blue" }}
+          activeStyle={{ color: "red", fontWeight: "bold" }}
+          to="/reviews"
+        >
+          Reviews
+        </NavLink>
+</li> */
+
 export default Navbar;

@@ -25639,6 +25639,16 @@ var Navbar = function Navbar(props) {
   );
 };
 
+/* <li>
+        <NavLink
+          style={{ color: "blue" }}
+          activeStyle={{ color: "red", fontWeight: "bold" }}
+          to="/reviews"
+        >
+          Reviews
+        </NavLink>
+</li> */
+
 exports.default = Navbar;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Modal.js":[function(require,module,exports) {
 "use strict";
@@ -25824,26 +25834,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home(props) {
   return _react2.default.createElement(
-    _react2.default.Fragment,
+    _react.Fragment,
     null,
     _react2.default.createElement(
       "div",
       { className: "home" },
-      _react2.default.createElement("div", { className: " pepperoni-1" }),
-      _react2.default.createElement("div", { className: " pepperoni-2" }),
-      _react2.default.createElement("div", { className: " pepperoni-3" }),
-      _react2.default.createElement("div", { className: " pepperoni-4" }),
-      _react2.default.createElement("div", { className: " pepperoni-5" }),
-      _react2.default.createElement("div", { className: " pepperoni-6" }),
-      _react2.default.createElement("div", { className: " pepperoni-7" }),
-      _react2.default.createElement("div", { className: " pepperoni-8" }),
-      _react2.default.createElement("div", { className: " pepperoni-9" }),
-      _react2.default.createElement("div", { className: " pepperoni-10" }),
-      _react2.default.createElement("div", { className: " pepperoni-11" }),
-      _react2.default.createElement("div", { className: " pepperoni-12" }),
-      _react2.default.createElement("div", { className: " pepperoni-13" }),
-      _react2.default.createElement("div", { className: " pepperoni-14" }),
-      _react2.default.createElement("div", { className: " pepperoni-15" }),
+      Array(15).fill(null).map(function (el, i) {
+        return _react2.default.createElement("div", { key: i, className: "pepperoni-" + (i + 1) });
+      }),
       _react2.default.createElement(
         "h1",
         { className: "home-title" },
@@ -25851,29 +25849,9 @@ var Home = function Home(props) {
       ),
       _react2.default.createElement(
         "p",
-        {
-          style: {
-            textAlign: "center",
-            marginTop: " 1rem",
-            position: "relative",
-            fontSize: "2rem",
-            color: "#111"
-          }
-        },
+        { className: "home-description" },
         "We use the freshest ingredients to make our Pizza!"
-      ),
-      _react2.default.createElement("div", {
-        style: {
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          hieght: "100%",
-          opacity: ".8",
-          overflow: "hidden",
-          zIndex: "-1"
-        }
-      })
+      )
     )
   );
 };
@@ -26220,12 +26198,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ErrorPage = function ErrorPage(_ref) {
   var history = _ref.history;
 
-  setTimeout(function () {
-    history.replace("/");
-  }, 2000);
+  // setTimeout(() => {
+  //   history.replace("/");
+  // }, 2000);
   return _react2.default.createElement(
     "div",
-    null,
+    {
+      style: {
+        height: "calc(100vh - 98px)"
+      }
+    },
     _react2.default.createElement(
       "h1",
       { style: { textAlign: "center", marginTop: "2rem" } },
@@ -26426,7 +26408,7 @@ var _Page2 = _interopRequireDefault(_Page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var container = function container(props) {
+var Container = function Container(props) {
   return _react2.default.createElement(
     _reactRouterDom.BrowserRouter,
     null,
@@ -26434,7 +26416,7 @@ var container = function container(props) {
   );
 };
 
-exports.default = container;
+exports.default = Container;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./Page":"containers/Page.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
@@ -26484,7 +26466,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58879' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49405' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

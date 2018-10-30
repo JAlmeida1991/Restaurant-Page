@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +9,15 @@ html {
 
 body {
   font-size: 1.5rem;
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   background-color: #ffe4b3; }
+
+noscript {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem; }
 
 .nav {
   background-color: #f39c12;
@@ -22,14 +30,22 @@ body {
 
 .home {
   height: calc(100vh - 75px);
+  min-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; }
+  position: relative;
+  padding: 1rem; }
   .home-title {
     text-align: center;
     font-size: 7rem;
+    color: #111; }
+  .home-description {
+    text-align: center;
+    margin-top: 1rem;
+    position: relative;
+    font-size: 2rem;
     color: #111; }
 
 .pepperoni-1, .pepperoni-2, .pepperoni-3, .pepperoni-4, .pepperoni-5, .pepperoni-6, .pepperoni-7, .pepperoni-8, .pepperoni-9, .pepperoni-10, .pepperoni-11, .pepperoni-12, .pepperoni-13, .pepperoni-14, .pepperoni-15 {
@@ -76,40 +92,40 @@ body {
 .pepperoni-10 {
   top: 2rem;
   right: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-10 {
       display: none; } }
 
 .pepperoni-11 {
   bottom: 2rem;
   right: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-11 {
       display: none; } }
 
 .pepperoni-12 {
   top: 2rem;
   left: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-12 {
       display: none; } }
 
 .pepperoni-13 {
   bottom: 2rem;
   left: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-13 {
       display: none; } }
 
 .pepperoni-14 {
   right: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-14 {
       display: none; } }
 
 .pepperoni-15 {
   left: 25%; }
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     .pepperoni-15 {
       display: none; } }
 
@@ -165,9 +181,11 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 1.8rem;
-  height: calc(100vh - 75px); }
+  height: calc(100vh - 75px);
+  padding: 1rem;
+  min-height: 65rem; }
 
 .footer {
   padding: 1rem;
   font-weight: bold;
-  background-color: orange; }
+  background-color: #f39c12; }

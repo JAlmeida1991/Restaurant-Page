@@ -3,10 +3,10 @@ import { BrowserRouter } from "react-router-dom";
 
 import Page from "./Page";
 
-const container = props => (
+const Container = props => (
   <BrowserRouter>
     <Page />
   </BrowserRouter>
 );
 
-export default container;
+export default Container;

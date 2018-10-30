@@ -1,19 +1,28 @@
 @mixin displayNone {
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     display: none;
   }
 }
 
 .home {
   height: calc(100vh - 75px);
+  min-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 1rem;
   &-title {
     text-align: center;
     font-size: 7rem;
+    color: #111;
+  }
+  &-description {
+    text-align: center;
+    margin-top: 1rem;
+    position: relative;
+    font-size: 2rem;
     color: #111;
   }
 }
