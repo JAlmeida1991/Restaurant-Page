@@ -1,9 +1,9 @@
 import React from "react";
 
 const ErrorPage = ({ history }) => {
-  // setTimeout(() => {
-  //   history.replace("/");
-  // }, 2000);
+  setTimeout(() => {
+    history.replace("/");
+  }, 2000);
   return (
     <div
       style={{

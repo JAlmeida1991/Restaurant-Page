@@ -7,6 +7,7 @@ import Home from "../components/Home";
 import Contact from "../components/Contact";
 import ErrorPage from "../components/Error";
 import Footer from "../components/Footer";
+import Reviews from "../components/Reviews";
 
 import pizza1 from "../images/pizza1.jpg";
 import pizza2 from "../images/pizza2.jpg";
@@ -49,6 +50,7 @@ class Page extends Component {
               <Contact {...props} contact={this.state.contact} />
             )}
           />
+          <Route exact path="/reviews" component={Reviews} />
           <Route path="/" exact component={Home} />
           <Route component={ErrorPage} />
         </Switch>

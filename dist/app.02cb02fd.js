@@ -25634,20 +25634,23 @@ var Navbar = function Navbar(props) {
           },
           "Contact"
         )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          {
+            style: { color: "blue" },
+            activeStyle: { color: "red", fontWeight: "bold" },
+            to: "/reviews"
+          },
+          "Reviews"
+        )
       )
     )
   );
 };
-
-/* <li>
-        <NavLink
-          style={{ color: "blue" }}
-          activeStyle={{ color: "red", fontWeight: "bold" }}
-          to="/reviews"
-        >
-          Reviews
-        </NavLink>
-</li> */
 
 exports.default = Navbar;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Modal.js":[function(require,module,exports) {
@@ -25989,10 +25992,16 @@ var Form = function (_Component) {
     _this.handleInputValidation = _this.handleInputValidation.bind(_this);
     _this.handleEmailValidation = _this.handleEmailValidation.bind(_this);
     _this.handleMessageValidation = _this.handleMessageValidation.bind(_this);
+    _this.nameInput = _react2.default.createRef();
     return _this;
   }
 
   _createClass(Form, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.nameInput.current.focus();
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(e) {
       this.setState(_defineProperty({}, e.target.name, {
@@ -26079,7 +26088,8 @@ var Form = function (_Component) {
           placeholder: "Name",
           name: "name",
           type: "text",
-          required: true
+          required: true,
+          ref: this.nameInput
         }),
         _react2.default.createElement("br", null),
         _react2.default.createElement("input", {
@@ -26198,9 +26208,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ErrorPage = function ErrorPage(_ref) {
   var history = _ref.history;
 
-  // setTimeout(() => {
-  //   history.replace("/");
-  // }, 2000);
+  setTimeout(function () {
+    history.replace("/");
+  }, 2000);
   return _react2.default.createElement(
     "div",
     {
@@ -26243,6 +26253,98 @@ var Footer = function Footer(props) {
 };
 
 exports.default = Footer;
+},{"react":"../node_modules/react/index.js"}],"components/Reviews.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Reviews = function (_Component) {
+  _inherits(Reviews, _Component);
+
+  function Reviews(props) {
+    _classCallCheck(this, Reviews);
+
+    var _this = _possibleConstructorReturn(this, (Reviews.__proto__ || Object.getPrototypeOf(Reviews)).call(this, props));
+
+    _this.state = { reviews: [] };
+    return _this;
+  }
+
+  _createClass(Reviews, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("https://jsonplaceholder.typicode.com/posts").then(function (res) {
+        return res.json();
+      }).then(function (reviews) {
+        return _this2.setState({ reviews: reviews });
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var randNum = Math.round(Math.random() * this.state.reviews.length);
+
+      var reviews = this.state.reviews.map(function (review) {
+        return _react2.default.createElement(
+          "div",
+          {
+            key: review.id,
+            style: {
+              padding: "3rem",
+              margin: "1rem",
+              border: "1px solid black",
+              boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)"
+            }
+          },
+          _react2.default.createElement(
+            "h2",
+            null,
+            review.title
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            review.body
+          )
+        );
+      }).splice(randNum);
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "h1",
+          { style: { textAlign: "center", margin: "2rem" } },
+          "Reviews"
+        ),
+        reviews
+      );
+    }
+  }]);
+
+  return Reviews;
+}(_react.Component);
+
+exports.default = Reviews;
 },{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
@@ -26295,6 +26397,10 @@ var _Error2 = _interopRequireDefault(_Error);
 var _Footer = require("../components/Footer");
 
 var _Footer2 = _interopRequireDefault(_Footer);
+
+var _Reviews = require("../components/Reviews");
+
+var _Reviews2 = _interopRequireDefault(_Reviews);
 
 var _pizza = require("../images/pizza1.jpg");
 
@@ -26377,6 +26483,7 @@ var Page = function (_Component) {
               return _react2.default.createElement(_Contact2.default, _extends({}, props, { contact: _this2.state.contact }));
             }
           }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/reviews", component: _Reviews2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { component: _Error2.default })
         ),
@@ -26389,7 +26496,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../components/Reviews":"components/Reviews.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26466,7 +26573,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49405' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49781' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

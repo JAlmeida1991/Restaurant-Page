@@ -32,11 +32,7 @@ const Navbar = props => (
           Contact
         </NavLink>
       </li>
-    </ul>
-  </nav>
-);
-
-/* <li>
+      <li>
         <NavLink
           style={{ color: "blue" }}
           activeStyle={{ color: "red", fontWeight: "bold" }}
@@ -44,6 +40,9 @@ const Navbar = props => (
         >
           Reviews
         </NavLink>
-</li> */
+      </li>
+    </ul>
+  </nav>
+);
 
 export default Navbar;

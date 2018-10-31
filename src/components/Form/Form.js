@@ -17,6 +17,11 @@ class Form extends Component {
     this.handleInputValidation = this.handleInputValidation.bind(this);
     this.handleEmailValidation = this.handleEmailValidation.bind(this);
     this.handleMessageValidation = this.handleMessageValidation.bind(this);
+    this.nameInput = React.createRef();
+  }
+
+  componentDidMount() {
+    this.nameInput.current.focus();
   }
 
   handleInput(e) {
@@ -93,6 +98,7 @@ class Form extends Component {
           name="name"
           type="text"
           required
+          ref={this.nameInput}
         />
         <br />
 
