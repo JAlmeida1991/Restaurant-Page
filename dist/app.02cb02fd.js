@@ -26253,6 +26253,28 @@ var Footer = function Footer(props) {
 };
 
 exports.default = Footer;
+},{"react":"../node_modules/react/index.js"}],"components/Spinner.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Spinner = function Spinner(props) {
+  return _react2.default.createElement(
+    "div",
+    { className: "loader" },
+    "Loading..."
+  );
+};
+
+exports.default = Spinner;
 },{"react":"../node_modules/react/index.js"}],"components/Reviews.js":[function(require,module,exports) {
 "use strict";
 
@@ -26265,6 +26287,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Spinner = require("./Spinner");
+
+var _Spinner2 = _interopRequireDefault(_Spinner);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26282,7 +26308,7 @@ var Reviews = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Reviews.__proto__ || Object.getPrototypeOf(Reviews)).call(this, props));
 
-    _this.state = { reviews: [] };
+    _this.state = { reviews: [], loading: true };
     return _this;
   }
 
@@ -26294,7 +26320,7 @@ var Reviews = function (_Component) {
       fetch("https://jsonplaceholder.typicode.com/posts").then(function (res) {
         return res.json();
       }).then(function (reviews) {
-        return _this2.setState({ reviews: reviews });
+        return _this2.setState({ reviews: reviews, loading: false });
       }).catch(function (error) {
         return console.log(error);
       });
@@ -26302,7 +26328,7 @@ var Reviews = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var randNum = Math.round(Math.random() * this.state.reviews.length);
+      var randNum = Math.round(Math.random() * (this.state.reviews.length - 4));
 
       var reviews = this.state.reviews.map(function (review) {
         return _react2.default.createElement(
@@ -26311,9 +26337,10 @@ var Reviews = function (_Component) {
             key: review.id,
             style: {
               padding: "3rem",
-              margin: "1rem",
+              margin: "1rem auto",
               border: "1px solid black",
-              boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)"
+              boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)",
+              width: "80%"
             }
           },
           _react2.default.createElement(
@@ -26327,15 +26354,16 @@ var Reviews = function (_Component) {
             review.body
           )
         );
-      }).splice(randNum);
+      }).slice(randNum, randNum + 4);
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "reviews" },
         _react2.default.createElement(
           "h1",
           { style: { textAlign: "center", margin: "2rem" } },
           "Reviews"
         ),
+        this.state.loading && _react2.default.createElement(_Spinner2.default, null),
         reviews
       );
     }
@@ -26345,7 +26373,7 @@ var Reviews = function (_Component) {
 }(_react.Component);
 
 exports.default = Reviews;
-},{"react":"../node_modules/react/index.js"}],"images/pizza1.jpg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Spinner":"components/Spinner.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
 module.exports = "/pizza2.88ad31b1.jpg";
@@ -26573,7 +26601,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49781' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49249' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
