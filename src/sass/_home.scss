@@ -5,8 +5,7 @@
 }
 
 .home {
-  height: calc(100vh - 80px);
-  min-height: 50rem;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,6 +1,7 @@
 .nav {
   background-color: $crustColor;
   padding: 1rem;
+  flex-shrink: 0;
 }
 
 .nav-list {

@@ -25774,7 +25774,7 @@ var Menu = function (_Component) {
 
       return _react2.default.createElement(
         "div",
-        { className: "menu-container" },
+        { className: "menu" },
         _react2.default.createElement(
           "h1",
           { className: "menu-title" },
@@ -25837,24 +25837,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home(props) {
   return _react2.default.createElement(
-    _react.Fragment,
-    null,
+    "div",
+    { className: "home" },
+    Array(15).fill(null).map(function (el, i) {
+      return _react2.default.createElement("div", { key: i, className: "pepperoni-" + (i + 1) });
+    }),
     _react2.default.createElement(
-      "div",
-      { className: "home" },
-      Array(15).fill(null).map(function (el, i) {
-        return _react2.default.createElement("div", { key: i, className: "pepperoni-" + (i + 1) });
-      }),
-      _react2.default.createElement(
-        "h1",
-        { className: "home-title" },
-        "John's One Stop Pizza Place"
-      ),
-      _react2.default.createElement(
-        "p",
-        { className: "home-description" },
-        "We use the freshest ingredients to make our Pizza!"
-      )
+      "h1",
+      { className: "home-title" },
+      "John's One Stop Pizza Place"
+    ),
+    _react2.default.createElement(
+      "p",
+      { className: "home-description" },
+      "We use the freshest ingredients to make our Pizza!"
     )
   );
 };
@@ -26215,7 +26211,7 @@ var ErrorPage = function ErrorPage(_ref) {
     "div",
     {
       style: {
-        height: "calc(100vh - 98px)"
+        flex: "1 0 auto"
       }
     },
     _react2.default.createElement(
@@ -26385,6 +26381,10 @@ module.exports = "/pizza4.31f098e9.jpg";
 module.exports = "/pizza5.345368ad.jpg";
 },{}],"images/pizza6.jpg":[function(require,module,exports) {
 module.exports = "/pizza6.af143f03.jpg";
+},{}],"images/pizza7.jpg":[function(require,module,exports) {
+module.exports = "/pizza7.194d4d0a.jpg";
+},{}],"images/pizza8.jpg":[function(require,module,exports) {
+module.exports = "/pizza8.2cab2046.jpg";
 },{}],"containers/Page.js":[function(require,module,exports) {
 "use strict";
 
@@ -26454,6 +26454,14 @@ var _pizza11 = require("../images/pizza6.jpg");
 
 var _pizza12 = _interopRequireDefault(_pizza11);
 
+var _pizza13 = require("../images/pizza7.jpg");
+
+var _pizza14 = _interopRequireDefault(_pizza13);
+
+var _pizza15 = require("../images/pizza8.jpg");
+
+var _pizza16 = _interopRequireDefault(_pizza15);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26471,7 +26479,7 @@ var Page = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
 
     _this.state = {
-      pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default],
+      pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default, _pizza14.default, _pizza16.default],
       contact: {
         address: {
           street: Math.round(Math.random() * 300) + " Main Street",
@@ -26524,7 +26532,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../components/Reviews":"components/Reviews.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg"}],"containers/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../components/Reviews":"components/Reviews.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg","../images/pizza7.jpg":"images/pizza7.jpg","../images/pizza8.jpg":"images/pizza8.jpg"}],"containers/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26601,7 +26609,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49249' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49309' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

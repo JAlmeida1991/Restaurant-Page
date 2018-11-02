@@ -15,12 +15,14 @@ import pizza3 from "../images/pizza3.jpg";
 import pizza4 from "../images/pizza4.jpg";
 import pizza5 from "../images/pizza5.jpg";
 import pizza6 from "../images/pizza6.jpg";
+import pizza7 from "../images/pizza7.jpg";
+import pizza8 from "../images/pizza8.jpg";
 
 class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas: [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6],
+      pizzas: [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6, pizza7, pizza8],
       contact: {
         address: {
           street: `${Math.round(Math.random() * 300)} Main Street`,
@@ -54,6 +56,7 @@ class Page extends Component {
           <Route path="/" exact component={Home} />
           <Route component={ErrorPage} />
         </Switch>
+
         <Footer />
       </Fragment>
     );

@@ -35,7 +35,7 @@ class Menu extends Component {
 
   render() {
     return (
-      <div className="menu-container">
+      <div className="menu">
         <h1 className="menu-title">Menu</h1>
         <p className="menu-intro">We sell the best pizza in town!</p>
         <div className="menu-pizza-container">

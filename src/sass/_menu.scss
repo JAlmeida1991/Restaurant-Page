@@ -1,6 +1,8 @@
-.menu-container {
+.menu {
+  flex: 1 0 auto;
   width: 95%;
   margin: 2rem auto;
+  align-items: center;
 }
 
 .menu-title,
@@ -11,7 +13,7 @@
 
 .menu-pizza-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1.5rem;
   margin-top: 1.5rem;
   justify-items: center;

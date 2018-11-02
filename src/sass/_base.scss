@@ -6,6 +6,17 @@ $crustColor: #f39c12;
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 html {
   font-size: 62.5%;
 }

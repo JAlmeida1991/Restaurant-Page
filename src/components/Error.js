@@ -7,7 +7,7 @@ const ErrorPage = ({ history }) => {
   return (
     <div
       style={{
-        height: "calc(100vh - 98px)"
+        flex: "1 0 auto"
       }}
     >
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
