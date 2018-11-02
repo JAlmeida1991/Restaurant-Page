@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import Spinner from "./Spinner";
 
 class Reviews extends Component {
@@ -7,8 +9,10 @@ class Reviews extends Component {
     this.state = { reviews: [], loading: true };
   }
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then(res => res.json())
+    console.log(axios);
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then(res => res.data)
       .then(reviews => this.setState({ reviews, loading: false }))
       .catch(error => console.log(error));
   }

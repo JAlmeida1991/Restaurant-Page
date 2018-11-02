@@ -1,7 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+
+import Page from "./containers/Page";
+
 import "./sass/styles.scss";
 
-import Container from "./containers/Container";
+const page = (
+  <BrowserRouter>
+    <Page />
+  </BrowserRouter>
+);
 
-ReactDOM.render(<Container />, document.getElementById("root"));
+ReactDOM.render(page, document.getElementById("root"));
