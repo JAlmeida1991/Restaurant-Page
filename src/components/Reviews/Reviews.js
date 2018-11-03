@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import Spinner from "./Spinner";
+import Spinner from "../UI/Spinner";
+import Review from "./Review/Review";
 
 class Reviews extends Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class Reviews extends Component {
     this.state = { reviews: [], loading: true };
   }
   componentDidMount() {
-    console.log(axios);
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
       .then(res => res.data)
@@ -21,21 +21,10 @@ class Reviews extends Component {
 
     let reviews = this.state.reviews
       .map(review => (
-        <div
-          key={review.id}
-          style={{
-            padding: "3rem",
-            margin: "1rem auto",
-            border: "1px solid black",
-            boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)",
-            width: "80%"
-          }}
-        >
-          <h2>{review.title}</h2>
-          <p>{review.body}</p>
-        </div>
+        <Review key={review.id} title={review.title} body={review.body} />
       ))
       .slice(randNum, randNum + 4);
+
     return (
       <div className="reviews">
         <h1 style={{ textAlign: "center", margin: "2rem" }}>Reviews</h1>

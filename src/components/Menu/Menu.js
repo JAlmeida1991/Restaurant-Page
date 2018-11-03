@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Modal from "./Modal";
+import Modal from "../UI/Modal";
 
 class Menu extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Menu extends Component {
     this.removeModalHandler = this.removeModalHandler.bind(this);
   }
 
-  formatPizza(index) {
+  formatPizzaIndex(index) {
     if (index + 1 == 1) {
       return <sup>st </sup>;
     } else if (index + 1 == 2) {
@@ -22,7 +22,6 @@ class Menu extends Component {
 
   showModalHandler(index) {
     if (!this.state.showModal) {
-      console.log(index);
       this.setState({ showModal: true, index: index });
     }
   }
@@ -43,7 +42,7 @@ class Menu extends Component {
             <div key={pizza} style={{ width: "100%" }}>
               <h2 style={{ textAlign: "center" }}>
                 {index + 1}
-                {this.formatPizza(index)}
+                {this.formatPizzaIndex(index)}
                 Pizza
               </h2>
               <img
@@ -54,13 +53,15 @@ class Menu extends Component {
             </div>
           ))}
         </div>
-        {this.state.showModal ? (
+        {this.state.showModal && (
           <Modal
             pizza={this.props.pizzas}
             index={this.state.index}
             removeModal={this.removeModalHandler}
+            alt="pizza"
+            src={this.props.pizzas[this.state.index]}
           />
-        ) : null}
+        )}
       </div>
     );
   }

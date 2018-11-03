@@ -4,8 +4,8 @@ const Modal = props => (
   <div onClick={props.removeModal} className="modal">
     <img
       onClick={e => e.stopPropagation()}
-      src={props.pizza[props.index]}
-      alt="pizza"
+      src={props.src}
+      alt={props.alt}
       className="modal-image"
     />
     <p onClick={e => e.stopPropagation()} className="modal-image-detail">

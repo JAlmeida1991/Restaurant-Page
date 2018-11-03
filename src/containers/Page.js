@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import NavBar from "../components/NavBar";
-import Menu from "../components/Menu";
-import Home from "../components/Home";
-import Contact from "../components/Contact";
-import ErrorPage from "../components/Error";
-import Footer from "../components/Footer";
-import Reviews from "../components/Reviews";
+import NavBar from "../components/NavBar/NavBar";
+import Menu from "../components/Menu/Menu";
+import Home from "../components/Home/Home";
+import Contact from "../components/Contact/Contact";
+import ErrorPage from "../components/Error/Error";
+import Footer from "../components/Footer/Footer";
+import Reviews from "../components/Reviews/Reviews";
 
 import pizza1 from "../images/pizza1.jpg";
 import pizza2 from "../images/pizza2.jpg";
@@ -22,6 +22,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "John's One Stop Pizza Place",
       pizzas: [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6, pizza7, pizza8],
       contact: {
         address: {
@@ -53,7 +54,11 @@ class Page extends Component {
             )}
           />
           <Route exact path="/reviews" component={Reviews} />
-          <Route path="/" exact component={Home} />
+          <Route
+            path="/"
+            exact
+            render={props => <Home {...props} name={this.state.name} />}
+          />
           <Route component={ErrorPage} />
         </Switch>
 

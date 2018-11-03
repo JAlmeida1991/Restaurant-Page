@@ -8,7 +8,7 @@ const Home = props => (
         <div key={i} className={`pepperoni-${i + 1}`} />
       ))}
 
-    <h1 className="home-title">John's One Stop Pizza Place</h1>
+    <h1 className="home-title">{props.name}</h1>
     <p className="home-description">
       We use the freshest ingredients to make our Pizza!
     </p>

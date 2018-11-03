@@ -25507,7 +25507,7 @@ exports.Switch = _Switch3.default;
 exports.generatePath = _generatePath3.default;
 exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
-},{"./BrowserRouter":"../node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"../node_modules/react-router-dom/es/HashRouter.js","./Link":"../node_modules/react-router-dom/es/Link.js","./MemoryRouter":"../node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"../node_modules/react-router-dom/es/NavLink.js","./Prompt":"../node_modules/react-router-dom/es/Prompt.js","./Redirect":"../node_modules/react-router-dom/es/Redirect.js","./Route":"../node_modules/react-router-dom/es/Route.js","./Router":"../node_modules/react-router-dom/es/Router.js","./StaticRouter":"../node_modules/react-router-dom/es/StaticRouter.js","./Switch":"../node_modules/react-router-dom/es/Switch.js","./generatePath":"../node_modules/react-router-dom/es/generatePath.js","./matchPath":"../node_modules/react-router-dom/es/matchPath.js","./withRouter":"../node_modules/react-router-dom/es/withRouter.js"}],"components/NavBar.js":[function(require,module,exports) {
+},{"./BrowserRouter":"../node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"../node_modules/react-router-dom/es/HashRouter.js","./Link":"../node_modules/react-router-dom/es/Link.js","./MemoryRouter":"../node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"../node_modules/react-router-dom/es/NavLink.js","./Prompt":"../node_modules/react-router-dom/es/Prompt.js","./Redirect":"../node_modules/react-router-dom/es/Redirect.js","./Route":"../node_modules/react-router-dom/es/Route.js","./Router":"../node_modules/react-router-dom/es/Router.js","./StaticRouter":"../node_modules/react-router-dom/es/StaticRouter.js","./Switch":"../node_modules/react-router-dom/es/Switch.js","./generatePath":"../node_modules/react-router-dom/es/generatePath.js","./matchPath":"../node_modules/react-router-dom/es/matchPath.js","./withRouter":"../node_modules/react-router-dom/es/withRouter.js"}],"components/NavBar/NavBar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25587,7 +25587,7 @@ var Navbar = function Navbar(props) {
 };
 
 exports.default = Navbar;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/Modal.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js"}],"components/UI/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25608,8 +25608,8 @@ var Modal = function Modal(props) {
       onClick: function onClick(e) {
         return e.stopPropagation();
       },
-      src: props.pizza[props.index],
-      alt: "pizza",
+      src: props.src,
+      alt: props.alt,
       className: "modal-image"
     }),
     _react2.default.createElement(
@@ -25624,7 +25624,7 @@ var Modal = function Modal(props) {
 };
 
 exports.default = Modal;
-},{"react":"../node_modules/react/index.js"}],"components/Menu.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/Menu/Menu.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25637,7 +25637,7 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Modal = require("./Modal");
+var _Modal = require("../UI/Modal");
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -25664,8 +25664,8 @@ var Menu = function (_Component) {
   }
 
   _createClass(Menu, [{
-    key: "formatPizza",
-    value: function formatPizza(index) {
+    key: "formatPizzaIndex",
+    value: function formatPizzaIndex(index) {
       if (index + 1 == 1) {
         return _react2.default.createElement(
           "sup",
@@ -25690,7 +25690,6 @@ var Menu = function (_Component) {
     key: "showModalHandler",
     value: function showModalHandler(index) {
       if (!this.state.showModal) {
-        console.log(index);
         this.setState({ showModal: true, index: index });
       }
     }
@@ -25730,7 +25729,7 @@ var Menu = function (_Component) {
                 "h2",
                 { style: { textAlign: "center" } },
                 index + 1,
-                _this2.formatPizza(index),
+                _this2.formatPizzaIndex(index),
                 "Pizza"
               ),
               _react2.default.createElement("img", {
@@ -25743,11 +25742,13 @@ var Menu = function (_Component) {
             );
           })
         ),
-        this.state.showModal ? _react2.default.createElement(_Modal2.default, {
+        this.state.showModal && _react2.default.createElement(_Modal2.default, {
           pizza: this.props.pizzas,
           index: this.state.index,
-          removeModal: this.removeModalHandler
-        }) : null
+          removeModal: this.removeModalHandler,
+          alt: "pizza",
+          src: this.props.pizzas[this.state.index]
+        })
       );
     }
   }]);
@@ -25756,7 +25757,7 @@ var Menu = function (_Component) {
 }(_react.Component);
 
 exports.default = Menu;
-},{"react":"../node_modules/react/index.js","./Modal":"components/Modal.js"}],"components/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../UI/Modal":"components/UI/Modal.js"}],"components/Home/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25779,7 +25780,7 @@ var Home = function Home(props) {
     _react2.default.createElement(
       "h1",
       { className: "home-title" },
-      "John's One Stop Pizza Place"
+      props.name
     ),
     _react2.default.createElement(
       "p",
@@ -25790,7 +25791,7 @@ var Home = function Home(props) {
 };
 
 exports.default = Home;
-},{"react":"../node_modules/react/index.js"}],"components/Form/emailRegex.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/Contact/Form/emailRegex.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25799,7 +25800,7 @@ Object.defineProperty(exports, "__esModule", {
 var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 exports.default = emailRegex;
-},{}],"components/Form/formStyles.js":[function(require,module,exports) {
+},{}],"components/Contact/Form/formStyles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25870,7 +25871,7 @@ exports.invalidMessageStyle = invalidMessageStyle;
 exports.validMessageStyle = validMessageStyle;
 exports.buttonStyle = buttonStyle;
 exports.disabledButtonStyle = disabledButtonStyle;
-},{}],"components/Form/Form.js":[function(require,module,exports) {
+},{}],"components/Contact/Form/Form.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26066,7 +26067,7 @@ var Form = function (_Component) {
 }(_react.Component);
 
 exports.default = Form;
-},{"react":"../node_modules/react/index.js","./emailRegex":"components/Form/emailRegex.js","./formStyles":"components/Form/formStyles.js"}],"components/Contact.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./emailRegex":"components/Contact/Form/emailRegex.js","./formStyles":"components/Contact/Form/formStyles.js"}],"components/Contact/Contact.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26122,7 +26123,7 @@ var Contact = function Contact(_ref) {
 };
 
 exports.default = Contact;
-},{"react":"../node_modules/react/index.js","./Form/Form":"components/Form/Form.js"}],"components/Error.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Form/Form":"components/Contact/Form/Form.js"}],"components/Error/Error.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26157,7 +26158,7 @@ var ErrorPage = function ErrorPage(_ref) {
 };
 
 exports.default = ErrorPage;
-},{"react":"../node_modules/react/index.js"}],"components/Footer.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/Footer/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27805,7 +27806,7 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"components/Spinner.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"components/UI/Spinner.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27827,7 +27828,46 @@ var Spinner = function Spinner(props) {
 };
 
 exports.default = Spinner;
-},{"react":"../node_modules/react/index.js"}],"components/Reviews.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/Reviews/Review/Review.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Review = function Review(props) {
+  return _react2.default.createElement(
+    "div",
+    {
+      style: {
+        padding: "3rem",
+        margin: "1rem auto",
+        border: "1px solid black",
+        boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)",
+        width: "80%"
+      }
+    },
+    _react2.default.createElement(
+      "h2",
+      null,
+      props.title
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      props.body
+    )
+  );
+};
+
+exports.default = Review;
+},{"react":"../node_modules/react/index.js"}],"components/Reviews/Reviews.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27844,9 +27884,13 @@ var _axios = require("axios");
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Spinner = require("./Spinner");
+var _Spinner = require("../UI/Spinner");
 
 var _Spinner2 = _interopRequireDefault(_Spinner);
+
+var _Review = require("./Review/Review");
+
+var _Review2 = _interopRequireDefault(_Review);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27873,7 +27917,6 @@ var Reviews = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log(_axios2.default);
       _axios2.default.get("https://jsonplaceholder.typicode.com/posts").then(function (res) {
         return res.data;
       }).then(function (reviews) {
@@ -27888,30 +27931,9 @@ var Reviews = function (_Component) {
       var randNum = Math.round(Math.random() * (this.state.reviews.length - 4));
 
       var reviews = this.state.reviews.map(function (review) {
-        return _react2.default.createElement(
-          "div",
-          {
-            key: review.id,
-            style: {
-              padding: "3rem",
-              margin: "1rem auto",
-              border: "1px solid black",
-              boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)",
-              width: "80%"
-            }
-          },
-          _react2.default.createElement(
-            "h2",
-            null,
-            review.title
-          ),
-          _react2.default.createElement(
-            "p",
-            null,
-            review.body
-          )
-        );
+        return _react2.default.createElement(_Review2.default, { key: review.id, title: review.title, body: review.body });
       }).slice(randNum, randNum + 4);
+
       return _react2.default.createElement(
         "div",
         { className: "reviews" },
@@ -27930,7 +27952,7 @@ var Reviews = function (_Component) {
 }(_react.Component);
 
 exports.default = Reviews;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","./Spinner":"components/Spinner.js"}],"images/pizza1.jpg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","../UI/Spinner":"components/UI/Spinner.js","./Review/Review":"components/Reviews/Review/Review.js"}],"images/pizza1.jpg":[function(require,module,exports) {
 module.exports = "/pizza1.483d66f9.jpg";
 },{}],"images/pizza2.jpg":[function(require,module,exports) {
 module.exports = "/pizza2.88ad31b1.jpg";
@@ -27963,31 +27985,31 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require("react-router-dom");
 
-var _NavBar = require("../components/NavBar");
+var _NavBar = require("../components/NavBar/NavBar");
 
 var _NavBar2 = _interopRequireDefault(_NavBar);
 
-var _Menu = require("../components/Menu");
+var _Menu = require("../components/Menu/Menu");
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Home = require("../components/Home");
+var _Home = require("../components/Home/Home");
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Contact = require("../components/Contact");
+var _Contact = require("../components/Contact/Contact");
 
 var _Contact2 = _interopRequireDefault(_Contact);
 
-var _Error = require("../components/Error");
+var _Error = require("../components/Error/Error");
 
 var _Error2 = _interopRequireDefault(_Error);
 
-var _Footer = require("../components/Footer");
+var _Footer = require("../components/Footer/Footer");
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Reviews = require("../components/Reviews");
+var _Reviews = require("../components/Reviews/Reviews");
 
 var _Reviews2 = _interopRequireDefault(_Reviews);
 
@@ -28040,6 +28062,7 @@ var Page = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
 
     _this.state = {
+      name: "John's One Stop Pizza Place",
       pizzas: [_pizza2.default, _pizza4.default, _pizza6.default, _pizza8.default, _pizza10.default, _pizza12.default, _pizza14.default, _pizza16.default],
       contact: {
         address: {
@@ -28081,7 +28104,13 @@ var Page = function (_Component) {
             }
           }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/reviews", component: _Reviews2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/", exact: true, component: _Home2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, {
+            path: "/",
+            exact: true,
+            render: function render(props) {
+              return _react2.default.createElement(_Home2.default, _extends({}, props, { name: _this2.state.name }));
+            }
+          }),
           _react2.default.createElement(_reactRouterDom.Route, { component: _Error2.default })
         ),
         _react2.default.createElement(_Footer2.default, null)
@@ -28093,7 +28122,7 @@ var Page = function (_Component) {
 }(_react.Component);
 
 exports.default = Page;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar":"components/NavBar.js","../components/Menu":"components/Menu.js","../components/Home":"components/Home.js","../components/Contact":"components/Contact.js","../components/Error":"components/Error.js","../components/Footer":"components/Footer.js","../components/Reviews":"components/Reviews.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg","../images/pizza7.jpg":"images/pizza7.jpg","../images/pizza8.jpg":"images/pizza8.jpg"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","../components/NavBar/NavBar":"components/NavBar/NavBar.js","../components/Menu/Menu":"components/Menu/Menu.js","../components/Home/Home":"components/Home/Home.js","../components/Contact/Contact":"components/Contact/Contact.js","../components/Error/Error":"components/Error/Error.js","../components/Footer/Footer":"components/Footer/Footer.js","../components/Reviews/Reviews":"components/Reviews/Reviews.js","../images/pizza1.jpg":"images/pizza1.jpg","../images/pizza2.jpg":"images/pizza2.jpg","../images/pizza3.jpg":"images/pizza3.jpg","../images/pizza4.jpg":"images/pizza4.jpg","../images/pizza5.jpg":"images/pizza5.jpg","../images/pizza6.jpg":"images/pizza6.jpg","../images/pizza7.jpg":"images/pizza7.jpg","../images/pizza8.jpg":"images/pizza8.jpg"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -28216,7 +28245,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50505' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '61505' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
