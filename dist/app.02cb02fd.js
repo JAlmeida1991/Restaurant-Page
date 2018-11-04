@@ -26009,7 +26009,7 @@ var Form = function (_Component) {
         },
         _react2.default.createElement(
           "h1",
-          { style: { marginBottom: ".5rem" } },
+          { style: { marginBottom: "1rem" } },
           "Questions?"
         ),
         _react2.default.createElement("input", {
@@ -27841,21 +27841,25 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Review = function Review(props) {
+  var _ref;
+
   return _react2.default.createElement(
     "div",
     {
-      style: {
+      style: (_ref = {
         padding: "3rem",
         margin: "1rem auto",
         border: "1px solid black",
         boxShadow: "0 .2rem .2rem rgba(0, 0, 0, .4)",
         width: "80%"
-      }
+      }, _defineProperty(_ref, "border", ".5rem solid #f39c12"), _defineProperty(_ref, "borderRadius", "2rem"), _ref)
     },
     _react2.default.createElement(
       "h2",
-      null,
+      { style: { textTransform: "uppercase" } },
       props.title
     ),
     _react2.default.createElement(
@@ -27968,7 +27972,7 @@ module.exports = "/pizza6.af143f03.jpg";
 module.exports = "/pizza7.194d4d0a.jpg";
 },{}],"images/pizza8.jpg":[function(require,module,exports) {
 module.exports = "/pizza8.2cab2046.jpg";
-},{}],"containers/Page.js":[function(require,module,exports) {
+},{}],"containers/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28197,26 +28201,26 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = require("react-dom");
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 var _reactRouterDom = require("react-router-dom");
 
-var _Page = require("./containers/Page");
+var _App = require("./containers/App");
 
-var _Page2 = _interopRequireDefault(_Page);
+var _App2 = _interopRequireDefault(_App);
 
 require("./sass/styles.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var page = _react2.default.createElement(
+var app = _react2.default.createElement(
   _reactRouterDom.BrowserRouter,
   null,
-  _react2.default.createElement(_Page2.default, null)
+  _react2.default.createElement(_App2.default, null)
 );
 
-_reactDom2.default.render(page, document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./containers/Page":"containers/Page.js","./sass/styles.scss":"sass/styles.scss"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var el = document.getElementById("root");
+
+(0, _reactDom.render)(app, el);
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/es/index.js","./containers/App":"containers/App.js","./sass/styles.scss":"sass/styles.scss"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -28245,7 +28249,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '61505' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '61481' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

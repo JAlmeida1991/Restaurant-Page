@@ -1,15 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { render as Render } from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import Page from "./containers/Page";
+import App from "./containers/App";
 
 import "./sass/styles.scss";
 
-const page = (
-  <BrowserRouter>
-    <Page />
-  </BrowserRouter>
+const app = (
+  <Router>
+    <App />
+  </Router>
 );
 
-ReactDOM.render(page, document.getElementById("root"));
+const el = document.getElementById("root");
+
+Render(app, el);
