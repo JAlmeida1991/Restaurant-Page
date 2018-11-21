@@ -9,9 +9,7 @@ const Modal = props => (
       className="modal-image"
     />
     <p onClick={e => e.stopPropagation()} className="modal-image-detail">
-      All our pizzas are made with the freshest ingredients. We pride our selves
-      to only serve organic ingredients only! Total Price for this pizza is:
-      {" $" + Math.floor(Math.random() * (12 - 8) + 8).toFixed(2)}
+      {props.description}
     </p>
   </div>
 );

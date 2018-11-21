@@ -1,13 +1,19 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import NavBar from "../components/NavBar/NavBar";
-import Menu from "../components/Menu/Menu";
 import Home from "../components/Home/Home";
-import Contact from "../components/Contact/Contact";
-import ErrorPage from "../components/Error/Error";
 import Footer from "../components/Footer/Footer";
-import Reviews from "../components/Reviews/Reviews";
+
+// Lazy Loaded Code:
+const Menu = lazy(() => import("../components/Menu/Menu"));
+const Contact = lazy(() => import("../components/Contact/Contact"));
+const ErrorPage = lazy(() => import("../components/Error/Error"));
+const Reviews = lazy(() => import("../components/Reviews/Reviews"));
+
+// Fallback Component for Suspense
+
+import Spinner from "../components/UI/Spinner";
 
 import pizza1 from "../images/pizza1.jpg";
 import pizza2 from "../images/pizza2.jpg";
@@ -18,7 +24,7 @@ import pizza6 from "../images/pizza6.jpg";
 import pizza7 from "../images/pizza7.jpg";
 import pizza8 from "../images/pizza8.jpg";
 
-class Page extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,27 +46,33 @@ class Page extends Component {
     return (
       <Fragment>
         <NavBar />
-        <Switch>
-          <Route
-            exact
-            path="/menu"
-            render={props => <Menu {...props} pizzas={this.state.pizzas} />}
-          />
-          <Route
-            exact
-            path="/contact"
-            render={props => (
-              <Contact {...props} contact={this.state.contact} />
-            )}
-          />
-          <Route exact path="/reviews" component={Reviews} />
-          <Route
-            path="/"
-            exact
-            render={props => <Home {...props} name={this.state.name} />}
-          />
-          <Route component={ErrorPage} />
-        </Switch>
+
+        <Suspense fallback={<Spinner />}>
+          <Switch>
+            <Route
+              exact
+              path="/menu"
+              render={props => <Menu {...props} pizzas={this.state.pizzas} />}
+            />
+
+            <Route
+              exact
+              path="/contact"
+              render={props => (
+                <Contact {...props} contact={this.state.contact} />
+              )}
+            />
+
+            <Route exact path="/reviews" render={props => <Reviews />} />
+            <Route
+              path="/"
+              exact
+              render={props => <Home {...props} name={this.state.name} />}
+            />
+
+            <Route render={props => <ErrorPage {...props} />} />
+          </Switch>
+        </Suspense>
 
         <Footer />
       </Fragment>
@@ -68,4 +80,4 @@ class Page extends Component {
   }
 }
 
-export default Page;
+export default App;

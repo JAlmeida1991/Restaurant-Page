@@ -60,6 +60,9 @@ class Menu extends Component {
             removeModal={this.removeModalHandler}
             alt="pizza"
             src={this.props.pizzas[this.state.index]}
+            description={`All our pizzas are made with the freshest ingredients. We pride ourselves
+      to use organic ingredients only! Total Price for this pizza is:
+       $${Math.floor(Math.random() * (12 - 8) + 8).toFixed(2)}`}
           />
         )}
       </div>
