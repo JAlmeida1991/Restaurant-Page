@@ -34,12 +34,12 @@ class Menu extends Component {
 
   render() {
     return (
-      <div className="menu">
+      <div className="container">
         <h1 className="menu-title">Menu</h1>
         <p className="menu-intro">We sell the best pizza in town!</p>
         <div className="menu-pizza-container">
           {this.props.pizzas.map((pizza, index) => (
-            <div key={pizza} style={{ width: "100%" }}>
+            <div key={pizza} className="pizza-box">
               <h2 style={{ textAlign: "center" }}>
                 {index + 1}
                 {this.formatPizzaIndex(index)}

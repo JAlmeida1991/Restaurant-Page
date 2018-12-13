@@ -1,10 +1,3 @@
-.menu {
-  flex: 1 0 auto;
-  width: 95%;
-  margin: 2rem auto;
-  align-items: center;
-}
-
 .menu-title,
 .menu-intro {
   text-align: center;
@@ -17,4 +10,9 @@
   grid-gap: 1.5rem;
   margin-top: 1.5rem;
   justify-items: center;
+}
+
+.pizza-box {
+  max-height: 33rem;
+  max-width: 33rem;
 }

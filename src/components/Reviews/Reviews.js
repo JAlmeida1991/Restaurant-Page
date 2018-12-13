@@ -26,8 +26,8 @@ class Reviews extends Component {
       .slice(randNum, randNum + 4);
 
     return (
-      <div className="reviews">
-        <h1 style={{ textAlign: "center", margin: "2rem" }}>Reviews</h1>
+      <div className="container">
+        <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Reviews</h1>
         {this.state.loading && <Spinner />}
         {reviews}
       </div>

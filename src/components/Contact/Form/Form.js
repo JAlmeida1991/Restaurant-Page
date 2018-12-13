@@ -88,8 +88,6 @@ class Form extends Component {
         action="mailto:jalmeida0291@gmail.com"
         method="POST"
       >
-        <h1 style={{ marginBottom: "1rem" }}>Questions?</h1>
-
         <input
           style={this.handleInputValidation("name") || formStyles.formElStyle}
           value={this.state.name.value}
