@@ -11,13 +11,7 @@ const Contact = ({ contact }) => {
         <br />
         <Form />
         <br />
-        <address
-          style={{
-            width: "30rem",
-            margin: "0 auto",
-            fontSize: "1.3rem"
-          }}
-        >
+        <address className="address">
           We are located at:
           <br />
           {street}

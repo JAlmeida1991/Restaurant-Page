@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import axios from "axios";
 
 import Spinner from "../UI/Spinner";
 import Review from "./Review/Review";
 
-class Reviews extends Component {
+// PureComponent will NOT fetch new reviews if user is already on reviews page
+
+class Reviews extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { reviews: [], loading: true };
@@ -27,7 +29,7 @@ class Reviews extends Component {
 
     return (
       <div className="container">
-        <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Reviews</h1>
+        <h1 className="review-title">Reviews</h1>
         {this.state.loading && <Spinner />}
         {reviews}
       </div>

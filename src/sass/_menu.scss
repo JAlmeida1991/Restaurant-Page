@@ -6,13 +6,12 @@
 
 .menu-pizza-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
   margin-top: 1.5rem;
   justify-items: center;
 }
 
 .pizza-box {
-  max-height: 33rem;
-  max-width: 33rem;
+  max-width: 32rem;
 }

@@ -15,8 +15,8 @@
 .modal-image {
   width: 50%;
   height: auto;
-  @media screen and (max-width: 40rem) {
-    width: 65%;
+  @media only screen and (max-width: 41.5rem) {
+    width: 75%;
   }
 }
 
